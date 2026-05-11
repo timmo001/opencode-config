@@ -59,9 +59,9 @@ Agents, commands, and plugins are not managed by `import-external-skill` — cop
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  | `fallow` skill |
 | `write-a-skill` | Create new OpenCode skills with concise descriptions, clear triggers, and minimal supporting files. Use when adding or rewriting a local skill, command-adjacent skill, or reusable agent workflow. |  |  |
 
-### Imported
+### Also Used
 
-These skills were imported from external sources and may include local adaptations.
+These skills are imported from external sources and are not included in this repo. Install them from their origin:
 
 | Skill | Origin |
 |---|---|
