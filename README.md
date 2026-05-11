@@ -79,8 +79,8 @@ These skills were imported from external sources and may include local adaptatio
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |
 | `/refactor-current-work` | Refactor current branch work while preserving behaviour | refactorer |
 | `/remove-single-use-functions` | Inline and remove safe single-use functions from current git scope | refactorer |
+| `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build |
 | `/review-current-work` | Review current branch work with BranchContextPlugin context | reviewer |
-| `/timmo001/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build |
 | `/types-enforce-ts` | Enforce TypeScript type safety in current git scope | refactorer |
 
 ## Plugins
