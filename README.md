@@ -72,6 +72,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose) | Yes |  |  |
 | `fallow` | [fallow-rs/fallow-skills](https://github.com/fallow-rs/fallow-skills/tree/main/fallow/skills/fallow) | No |  |  |
+| `handoff` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) | No |  |  |
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  |  |
 | `motion-choreography-patterns` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/motion-choreography-patterns) | No |  |  |
@@ -99,6 +100,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask | `fallow` skill |  |
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | ask | `fallow` skill |  |
 | `/git-workflow` | Read branch, diff, and PR context from BranchContextPlugin without extra git calls | ask | `branch-context` plugin |  |
+| `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
 | `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | ask |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
