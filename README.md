@@ -40,25 +40,32 @@ Agents, commands, and plugins are not managed by `import-external-skill` — cop
 
 ## Skills
 
-| Skill | Description | Origin | Requires | Works with |
-|---|---|---|---|---|
-| `ask-questions-if-underspecified` | Ask minimal clarifying questions only when ambiguity materially changes implementation | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) |  |  |
-| `check-skill-updates` | Check imported skills for upstream changes and apply updates. Use when reviewing whether externally imported skills have new upstream content, or when `dot skill-updates` reports available changes. |  |  | `import-external-skill` skill |
-| `cleanup-unnecessary-variables` | Safe unnecessary-variable cleanup guidance for code review and refactoring. |  |  |  |
-| `css-motion-systems` | CSS motion design and implementation for web interfaces. Use when designing or building transitions, animations, `linear()` easing, transform strategy, View Transitions API patterns, motion tokens, or reviewing motion quality and accessibility. | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) |  |  |
-| `diagnose` | Disciplined diagnosis workflow for hard bugs, regressions, flaky behavior, and performance issues. Use when behavior is broken, failing, intermittent, or slower than expected and the agent needs a reproducible feedback loop before fixing. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose) |  |  |
-| `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |  |
-| `fallow` | Codebase intelligence for JavaScript and TypeScript. Free static layer finds unused code (files, exports, types, dependencies), code duplication, circular dependencies, complexity hotspots, architecture boundary violations, and feature flag patterns. Runtime coverage merges production execution data into the same health report for hot-path review, cold-path deletion confidence, and stale-flag evidence - a single local capture is free, while continuous/cloud runtime monitoring is paid. 94 framework plugins, zero configuration, sub-second static analysis. Use when asked to analyze code health, find unused code, detect duplicates, check circular dependencies, audit complexity, check architecture boundaries, detect feature flags, clean up the codebase, auto-fix issues, merge runtime coverage, or run fallow. | [fallow-rs/fallow-skills](https://github.com/fallow-rs/fallow-skills/tree/main/fallow/skills/fallow) |  |  |
-| `git-workflow` | Patterns for working with git branches, remotes, and diffs against the default branch |  | `branch-context` plugin |  |
-| `html` | Writes and reviews semantic, accessible HTML and template markup that stays readable and low-noise. Use when creating or refactoring HTML or Svelte templates, cleaning up div soup, choosing better elements, improving form markup, fixing heading or landmark structure, or replacing custom controls with native HTML. | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) |  |  |
-| `import-external-skill` | Import skills from external repos into the local dotfiles skill library. Use when pulling in a skill from a public repo, reviewing an external skill set for useful additions, or adapting external skill content into existing local skills. |  |  |  |
-| `improve-codebase-architecture` | Review a codebase area for architectural friction and propose focused structural improvements. Use when the user wants to improve maintainability, reduce coupling, simplify understanding, or identify where code should be consolidated or deepened. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) |  |  |
-| `motion-choreography-patterns` | Use when orchestrating multi-element UI motion, stagger systems, list reorder/insert/remove flows, modal and overlay stacks, gesture-driven transitions, and route-level choreography that preserves hierarchy and attention. | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/motion-choreography-patterns) |  |  |
-| `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |  |
-| `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |  |
-| `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |  |
-| `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  |  | `fallow` skill |
-| `write-a-skill` | Create new OpenCode skills with concise descriptions, clear triggers, and minimal supporting files. Use when adding or rewriting a local skill, command-adjacent skill, or reusable agent workflow. | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/write-a-skill) |  |  |
+| Skill | Description | Requires | Works with |
+|---|---|---|---|
+| `check-skill-updates` | Check imported skills for upstream changes and apply updates. Use when reviewing whether externally imported skills have new upstream content, or when `dot skill-updates` reports available changes. |  | `import-external-skill` skill |
+| `cleanup-unnecessary-variables` | Safe unnecessary-variable cleanup guidance for code review and refactoring. |  |  |
+| `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
+| `git-workflow` | Patterns for working with git branches, remotes, and diffs against the default branch | `branch-context` plugin |  |
+| `import-external-skill` | Import skills from external repos into the local dotfiles skill library. Use when pulling in a skill from a public repo, reviewing an external skill set for useful additions, or adapting external skill content into existing local skills. |  |  |
+| `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
+| `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
+| `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |
+| `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  | `fallow` skill |
+
+### Adapted From External Sources
+
+These skills were originally imported and adapted for local use. They are included in this repo with local modifications.
+
+| Skill | Origin | Requires | Works with |
+|---|---|---|---|
+| `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) |  |  |
+| `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) |  |  |
+| `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose) |  |  |
+| `fallow` | [fallow-rs/fallow-skills](https://github.com/fallow-rs/fallow-skills/tree/main/fallow/skills/fallow) |  |  |
+| `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) |  |  |
+| `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) |  |  |
+| `motion-choreography-patterns` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/motion-choreography-patterns) |  |  |
+| `write-a-skill` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/write-a-skill) |  |  |
 
 ## Agents
 
