@@ -68,6 +68,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Skill | Origin | Local Changes | Requires | Works with |
 |---|---|---|---|---|
+| `agent-browser` | [vercel-labs/agent-browser](https://github.com/vercel-labs/agent-browser/tree/d33bdb36f3f7793c977e8c503e5962721b275db8/skills/agent-browser) | No |  |  |
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose) | Yes |  |  |
