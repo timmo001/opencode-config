@@ -2,7 +2,7 @@
 
 Shared [OpenCode](https://opencode.ai) skills, agents, plugins, and commands.
 
-Published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles) — source at [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/main/agents/.config/opencode).
+Published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles) — source at [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode).
 
 ## Installation
 
@@ -94,8 +94,5 @@ These skills were imported from external sources and may include local adaptatio
 
 ## Publishing
 
-This repo is published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles) via `git subtree push`:
-
-```bash
-dot opencode-publish
-```
+This repo is published automatically via GitHub Actions when the source
+[`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode) changes.
