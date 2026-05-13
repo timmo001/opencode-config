@@ -55,7 +55,6 @@ The config is built around a few patterns:
 | `check-skill-updates` | Check imported skills for upstream changes and apply updates. Use when reviewing whether externally imported skills have new upstream content, or when `dot skill-updates` reports available changes. |  | `import-external-skill` skill |
 | `cleanup-unnecessary-variables` | Safe unnecessary-variable cleanup guidance for code review and refactoring. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
-| `effect-ts` | Effect-TS patterns for services, errors, layers, concurrency, and resource management. Use when writing, reviewing, or refactoring TypeScript code using the Effect library (Effect.gen, Context.Tag, Layer, PubSub, Stream, Schedule, Fiber). |  |  |
 | `git-workflow` | Patterns for working with git branches, remotes, and diffs against the default branch | `branch-context` plugin |  |
 | `import-external-skill` | Import skills from external repos into the local dotfiles skill library. Use when pulling in a skill from a public repo, reviewing an external skill set for useful additions, or adapting external skill content into existing local skills. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
@@ -72,6 +71,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose) | Yes |  |  |
+| `effect` | [anomalyco/opencode](https://github.com/anomalyco/opencode/tree/dev/.opencode/skills/effect) | No |  |  |
 | `fallow` | [fallow-rs/fallow-skills](https://github.com/fallow-rs/fallow-skills/tree/main/fallow/skills/fallow) | No |  |  |
 | `handoff` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/handoff) | No |  |  |
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
