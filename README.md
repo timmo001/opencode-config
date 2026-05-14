@@ -60,6 +60,7 @@ The config is built around a few patterns:
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
 | `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |
+| `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  | `fallow` skill |
 
 ### From External Sources
