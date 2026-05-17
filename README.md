@@ -38,6 +38,22 @@ It also supports a review mode: give it a repo URL and it will list all availabl
 
 Agents, commands, and plugins are not managed by `import-external-skill` — copy them manually as shown above.
 
+### Minimum Configuration
+
+This repo provides skills, agents, commands, and plugins but not an `opencode.json` config file. You need one to load them. Here is a minimal starting point:
+
+```jsonc
+{
+  "$schema": "https://opencode.ai/config.json",
+  // Choose your provider and model
+  "model": "anthropic/claude-sonnet-4-20250514",
+  // Agents defined in agents/ are loaded automatically from ~/.config/opencode/agents/
+  // MCP servers, tool overrides, and provider options go here as needed
+}
+```
+
+Place it at `~/.config/opencode/opencode.json` (or `opencode.jsonc` for comments). See the [OpenCode docs](https://opencode.ai/docs/config) for the full configuration reference.
+
 ## How It Fits Together
 
 The config is built around a few patterns:
