@@ -113,7 +113,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 | Command | Description | Agent | Requires | Works with |
 |---|---|---|---|---|
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
-| `/cleanup-unnecessary-variables` | Inline and remove unnecessary variables from current git scope | refactorer | `branch-context` plugin |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask | `fallow` skill |  |
@@ -124,11 +123,12 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | ask |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
+| `/refactor-cleanup-variables` | Refactor - inline and remove unnecessary variables from current git scope | refactorer | `branch-context` plugin,`cleanup-unnecessary-variables` skill |  |
 | `/refactor-current-work` | Refactor current branch work while preserving behaviour | refactorer | `branch-context` plugin |  |
-| `/remove-single-use-functions` | Inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin |  |
+| `/refactor-enforce-types` | Refactor - enforce TypeScript type safety in current git scope | refactorer | `branch-context` plugin,`types-enforce-ts` skill |  |
+| `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`remove-single-use-functions` skill |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin |  |
 | `/review-current-work` | Review current branch work with BranchContextPlugin context | reviewer | `branch-context` plugin,`pr-review` skill |  |
-| `/types-enforce-ts` | Enforce TypeScript type safety in current git scope | refactorer | `branch-context` plugin |  |
 
 ## Plugins
 
