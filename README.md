@@ -14,7 +14,7 @@ cd opencode-config
 
 # Copy individual items
 cp -r skills/diagnose ~/.config/opencode/skills/
-cp commands/git-workflow.md ~/.config/opencode/commands/
+cp commands/inject-context.md ~/.config/opencode/commands/
 cp plugins/env-protection.js ~/.config/opencode/plugins/
 cp agents/reviewer.md ~/.config/opencode/agents/
 
@@ -72,7 +72,7 @@ The config is built around a few patterns:
 | `check-skill-updates` | Check imported skills for upstream changes and apply updates. Use when reviewing whether externally imported skills have new upstream content, or when `dot skill-updates` reports available changes. |  | `import-external-skill` skill |
 | `cleanup-unnecessary-variables` | Safe unnecessary-variable cleanup guidance for code review and refactoring. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
-| `git-workflow` | Patterns for working with git branches, remotes, and diffs against the default branch | `branch-context` plugin |  |
+| `git-context` | Patterns for working with git branches, remotes, and diffs against the default branch | `branch-context` plugin |  |
 | `import-external-skill` | Import skills from external repos into the local dotfiles skill library. Use when pulling in a skill from a public repo, reviewing an external skill set for useful additions, or adapting external skill content into existing local skills. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
