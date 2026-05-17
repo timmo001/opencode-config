@@ -118,10 +118,10 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask | `fallow` skill |  |
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | ask | `fallow` skill |  |
-| `/git-workflow` | Read branch, diff, and PR context from BranchContextPlugin without extra git calls | default | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
 | `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | ask |  |  |
+| `/inject-context` | Inject branch context and optionally execute an instruction | default |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
 | `/refactor-cleanup-variables` | Refactor - inline and remove unnecessary variables from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`cleanup-unnecessary-variables` skill |  |
