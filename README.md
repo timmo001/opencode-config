@@ -120,7 +120,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | ask | `fallow` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
-| `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | ask |  |  |
+| `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | plan |  |  |
 | `/inject-context` | Inject branch context and optionally execute an instruction | default |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
 | `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
