@@ -125,6 +125,9 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
 | `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
 | `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default |  |  |
+| `/note-reference` | Load one or more notes for the current repository into context | default |  |  |
+| `/notes-list` | List all notes for the current repository | default |  |  |
+| `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
 | `/refactor-cleanup-variables` | Refactor - inline and remove unnecessary variables from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`cleanup-unnecessary-variables` skill |  |
 | `/refactor-current-work` | Refactor current branch work while preserving behaviour | refactorer | `branch-context` plugin,`branch-context-consumer` skill |  |
@@ -139,9 +142,10 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `env-protection` | Blocks reads of .env files to prevent leaking secrets |
+| `notes-guard` | Blocks direct LLM file tool access to the notes vault |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
-| `repo-notes` | Injects repo-note context blocks into /note-create and /note-append commands |
+| `repo-notes` | Injects repo-note context blocks into note commands |
 
 ## Publishing
 

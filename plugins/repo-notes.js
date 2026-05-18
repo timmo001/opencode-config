@@ -1,9 +1,10 @@
 /**
- * @file Injects repo-note context blocks into /note-create and /note-append commands.
+ * @file Injects repo-note context blocks into note commands.
  *
  * Hooks into `command.execute.before` to resolve the current repository's
- * owner/repo from the git remote, build the notes directory path, and (for
- * note-append) list existing note files ranked by modification time.
+ * owner/repo from the git remote, build the notes directory path, list
+ * existing note files with frontmatter, and (for note-reference) pre-inject
+ * full note content.
  *
  * Notes are stored at:
  *   $NOTES/repo-notes/{owner}/{repo}/{topic-slug}.md
@@ -11,7 +12,21 @@
  * Falls back to ~/Documents/notes when $NOTES is not set.
  */
 
-const NOTE_COMMANDS = new Set(["note-create", "note-append"])
+const NOTE_COMMANDS = new Set([
+  "note-create",
+  "note-append",
+  "notes-list",
+  "notes-search",
+  "note-reference",
+])
+
+/** Commands that need the existing-notes list injected. */
+const COMMANDS_NEEDING_LIST = new Set([
+  "note-append",
+  "notes-list",
+  "notes-search",
+  "note-reference",
+])
 
 const NOTES_SUBDIR = "repo-notes"
 
@@ -57,6 +72,43 @@ const parseRemoteUrl = (url) => {
   return null
 }
 
+/**
+ * Read frontmatter fields (name, description, tags) from a note file.
+ * Only reads the first 20 lines to keep I/O light.
+ */
+const readNoteFrontmatter = async ($, filePath) => {
+  const headResult = await run(() => $`head -20 ${filePath}`.text())
+  let name = null
+  let description = null
+  let tags = []
+  if (headResult.ok && headResult.text) {
+    const nameMatch = headResult.text.match(/^name:\s*(.+)$/m)
+    const descMatch = headResult.text.match(/^description:\s*(.+)$/m)
+    const tagsMatch = headResult.text.match(/^tags:\s*\[(.+)\]$/m)
+    if (nameMatch) name = nameMatch[1].trim()
+    if (descMatch) description = descMatch[1].trim()
+    if (tagsMatch) {
+      tags = tagsMatch[1]
+        .split(",")
+        .map((t) => t.trim().replace(/^['"]|['"]$/g, ""))
+        .filter(Boolean)
+    }
+  }
+  return { name, description, tags }
+}
+
+/**
+ * Build a human-readable label for a note entry.
+ * Format: filename — Name: Description [tags: a, b, c] (last modified: date)
+ */
+const buildNoteLabel = (filename, mtime, { name, description, tags }) => {
+  const date = new Date(mtime * 1000).toISOString().slice(0, 10)
+  const tagPart = tags.length ? ` [tags: ${tags.join(", ")}]` : ""
+  if (name && description) return `${filename} — ${name}: ${description}${tagPart} (last modified: ${date})`
+  if (name) return `${filename} — ${name}${tagPart} (last modified: ${date})`
+  return `${filename}${tagPart} (last modified: ${date})`
+}
+
 const formatTag = (name, description, lines) => {
   const body = [`Description: ${description}`, ...lines.filter(Boolean)].join("\n").trim()
   return [`<${name}>`, body || "(empty)", `</${name}>`].join("\n")
@@ -80,6 +132,67 @@ const formatErrorContext = (message, error) => {
 }
 
 export const RepoNotesPlugin = async ({ $ }) => {
+  // Custom tools for note I/O.
+  // Args use plain JSON Schema 7 objects — OpenCode falls back to legacyJsonSchema
+  // when args are not Zod types, so no imports are required.
+  // Direct read/write/edit/bash access to the notes vault is blocked by notes-guard.js;
+  // these tools are the only permitted path for note file I/O.
+
+  const note_read = {
+    description:
+      "Read the full content of a note file from the notes vault. " +
+      "Use this to read an existing note before appending to it. " +
+      "This is the ONLY permitted way to read note files — the built-in read tool is blocked for the notes vault.",
+    args: {
+      path: {
+        type: "string",
+        description: "Absolute path to the note file (e.g. /home/user/Documents/notes/repo-notes/owner/repo/slug.md)",
+      },
+    },
+    async execute(args) {
+      try {
+        const content = await Bun.file(args.path).text()
+        return content
+      } catch (e) {
+        throw new Error(`note_read: failed to read file ${args.path}: ${errorMessage(e)}`)
+      }
+    },
+  }
+
+  const note_write = {
+    description:
+      "Write a note file to the notes vault. " +
+      "Used exclusively by note-create and note-append to persist generated note content to disk. " +
+      "Creates parent directories automatically. " +
+      "This is the ONLY permitted way to write note files — the built-in write, edit, and bash tools are blocked for the notes vault.",
+    args: {
+      path: {
+        type: "string",
+        description: "Absolute path to the note file (e.g. /home/user/Documents/notes/repo-notes/owner/repo/slug.md)",
+      },
+      content: {
+        type: "string",
+        description: "Full file content to write, including frontmatter and all sections",
+      },
+    },
+    async execute(args) {
+      const dir = args.path.substring(0, args.path.lastIndexOf("/"))
+      if (dir) {
+        try {
+          await $`mkdir -p ${dir}`.text()
+        } catch (e) {
+          throw new Error(`note_write: failed to create directory ${dir}: ${errorMessage(e)}`)
+        }
+      }
+      try {
+        await Bun.write(args.path, args.content)
+      } catch (e) {
+        throw new Error(`note_write: failed to write file ${args.path}: ${errorMessage(e)}`)
+      }
+      return `Written: ${args.path}`
+    },
+  }
+
   const buildRepoNoteContext = async ({ command }) => {
     const warnings = []
 
@@ -142,13 +255,12 @@ export const RepoNotesPlugin = async ({ $ }) => {
     const notesPath = `${notesRoot}/${NOTES_SUBDIR}/${owner}/${repo}`
 
     // --- Check if notes directory exists ---
-    // test -d exits 0 if the directory exists, non-zero otherwise
     const dirCheckResult = await run(() => $`test -d ${notesPath}`.text())
     const notesExist = dirCheckResult.ok
 
-    // --- For note-append: list existing notes sorted by modification time ---
-    let existingNotes = []
-    if (command === "note-append" && notesExist) {
+    // --- Build sorted note entries with frontmatter for list-aware commands ---
+    let noteEntries = []
+    if (COMMANDS_NEEDING_LIST.has(command) && notesExist) {
       const listResult = await run(() =>
         $`find ${notesPath} -maxdepth 1 -name "*.md" -printf "%T@ %f\n"`.text(),
       )
@@ -166,26 +278,11 @@ export const RepoNotesPlugin = async ({ $ }) => {
           .filter((e) => e.filename)
           .sort((a, b) => b.mtime - a.mtime)
 
-        // Read frontmatter (name + description) from each file for readable labels
-        existingNotes = await Promise.all(
+        noteEntries = await Promise.all(
           sorted.map(async ({ filename, mtime }) => {
             const filePath = `${notesPath}/${filename}`
-            const date = new Date(mtime * 1000).toISOString().slice(0, 10)
-            const headResult = await run(() => $`head -20 ${filePath}`.text())
-            let name = null
-            let description = null
-            if (headResult.ok && headResult.text) {
-              const nameMatch = headResult.text.match(/^name:\s*(.+)$/m)
-              const descMatch = headResult.text.match(/^description:\s*(.+)$/m)
-              if (nameMatch) name = nameMatch[1].trim()
-              if (descMatch) description = descMatch[1].trim()
-            }
-            const label = name
-              ? description
-                ? `${filename} — ${name}: ${description} (last modified: ${date})`
-                : `${filename} — ${name} (last modified: ${date})`
-              : `${filename} (last modified: ${date})`
-            return label
+            const frontmatter = await readNoteFrontmatter($, filePath)
+            return { filename, filePath, mtime, ...frontmatter }
           }),
         )
       } else if (!listResult.ok) {
@@ -215,10 +312,10 @@ export const RepoNotesPlugin = async ({ $ }) => {
       formatTag("repository", "Current repository identity and resolved notes path.", repoLines),
     ]
 
-    if (command === "note-append") {
+    if (COMMANDS_NEEDING_LIST.has(command)) {
       const notesLines =
-        existingNotes.length > 0
-          ? existingNotes
+        noteEntries.length > 0
+          ? noteEntries.map((e) => buildNoteLabel(e.filename, e.mtime, e))
           : notesExist
             ? ["(no .md files found in notes directory)"]
             : ["(notes directory does not exist yet)"]
@@ -226,10 +323,24 @@ export const RepoNotesPlugin = async ({ $ }) => {
       parts.push(
         formatTag(
           "existing-notes",
-          "Existing note files for this repository, sorted newest-first by modification time. These are candidates for /note-append.",
+          "Existing note files for this repository, sorted newest-first by modification time.",
           notesLines,
         ),
       )
+    }
+
+    // --- For note-reference: pre-inject full content of all notes ---
+    if (command === "note-reference" && noteEntries.length > 0) {
+      const contentParts = ["<note-contents>", "Description: Full content of all note files for this repository."]
+      for (const entry of noteEntries) {
+        const bodyResult = await run(() => $`cat ${entry.filePath}`.text())
+        const body = bodyResult.ok ? bodyResult.text : `(error reading file: ${bodyResult.error})`
+        contentParts.push(`<note file="${entry.filename}">`)
+        contentParts.push(body)
+        contentParts.push(`</note>`)
+      }
+      contentParts.push("</note-contents>")
+      parts.push(contentParts.join("\n"))
     }
 
     if (warnings.length) {
@@ -251,6 +362,10 @@ export const RepoNotesPlugin = async ({ $ }) => {
       if (!NOTE_COMMANDS.has(input.command)) return
       const text = await buildRepoNoteContext({ command: input.command })
       output.parts.unshift({ type: "text", text })
+    },
+    tool: {
+      note_read,
+      note_write,
     },
   }
 }
