@@ -73,7 +73,11 @@ The config is built around a few patterns:
 | `cleanup-unnecessary-variables` | Safe unnecessary-variable cleanup guidance for code review and refactoring. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
 | `git-context` | Patterns for working with git branches, remotes, and diffs against the default branch | `branch-context` plugin |  |
+| `home-assistant-frontend` | Home Assistant frontend development with Lit Web Components and TypeScript. Use when working in the Home Assistant frontend repo, editing ha-* components, reviewing HA PRs, or applying HA-specific conventions (localization, theming, dialogs, panels, cards). |  | `cleanup-unnecessary-variables` skill,`home-assistant-lazy-context` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
+| `home-assistant-lazy-context` | Home Assistant frontend lazy-context and memoization guidance for context-aware components. |  |  |
+| `home-assistant-lit-rendering` | Home Assistant Lit rendering extensions for HA components and context-aware picker callback shape. |  | `lit-rendering` skill |
 | `import-external-skill` | Import skills from external repos into the local dotfiles skill library. Use when pulling in a skill from a public repo, reviewing an external skill set for useful additions, or adapting external skill content into existing local skills. |  |  |
+| `lit-rendering` | Lit rendering and picker callback-shape guidance for editing and reviewing Lit components. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
 | `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |
@@ -113,12 +117,19 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Command | Description | Agent | Requires | Works with |
 |---|---|---|---|---|
+| `/all-lit-skills` | Apply all Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `lit-rendering` skill |
+| `/all-ts-skills` | Apply all TypeScript-specific skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`fallow` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask | `fallow` skill |  |
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | ask | `fallow` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
+| `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
+| `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill | `lit-rendering` skill |
+| `/home-assistant/lit-rendering` | Review and fix Home Assistant Lit rendering and picker callback-shape patterns in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lit-rendering` skill |  |
+| `/home-assistant/migrate-dialog` | Migrate dialog(s) to ha-wa-dialog (path or name targets) | default |  |  |
+| `/home-assistant/replace-spacing` | Replace hardcoded spacing values with ha-space tokens from core.globals.ts | default |  |  |
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
 | `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | plan |  |  |
 | `/inject-context` | Inject branch context and optionally execute an instruction | default |  |  |
