@@ -100,6 +100,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask |  |  |
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | ask |  |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
+| `/handoffs-list` | List handoff notes for the current repository | default |  |  |
 | `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin |  |
 | `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin |  |
 | `/home-assistant/list-components` | Migrate Home Assistant list components from MWC to new primitives in current git scope | default | `branch-context` plugin |  |
@@ -113,7 +114,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
 | `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default |  |  |
 | `/note-reference` | Load one or more notes for the current repository into context | default |  |  |
-| `/notes-list` | List all notes for the current repository | default |  |  |
+| `/notes-list` | List notes for the current repository, optionally filtered by tag | default |  |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
 | `/refactor-cleanup-variables` | Refactor - inline and remove unnecessary variables from current git scope | refactorer | `branch-context` plugin |  |
