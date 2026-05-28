@@ -105,7 +105,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin |  |
 | `/home-assistant/list-components` | Migrate Home Assistant list components from MWC to new primitives in current git scope | default | `branch-context` plugin |  |
 | `/home-assistant/lit-rendering` | Review and fix Home Assistant Lit rendering and picker callback-shape patterns in current git scope | default | `branch-context` plugin |  |
-| `/home-assistant/migrate-dialog` | Migrate dialog(s) to ha-wa-dialog (path or name targets) | default |  |  |
 | `/home-assistant/replace-spacing` | Replace hardcoded spacing values with ha-space tokens from core.globals.ts | default |  |  |
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
 | `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | plan |  |  |
