@@ -129,10 +129,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `env-protection` | Blocks reads of .env files to prevent leaking secrets |
-| `notes-guard` | Blocks direct LLM file tool access to the notes vault |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
-| `repo-notes` | Injects repo-note context blocks into note commands |
 
 ## Publishing
 
