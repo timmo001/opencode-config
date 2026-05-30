@@ -15,7 +15,7 @@ cd opencode-config
 # Copy individual items
 cp -r skills/diagnose ~/.agents/skills/
 cp commands/inject-context.md ~/.config/opencode/commands/
-cp plugins/env-protection.js ~/.config/opencode/plugins/
+cp plugins/env-protection.ts ~/.config/opencode/plugins/
 cp agents/reviewer.md ~/.config/opencode/agents/
 
 # Or copy everything
@@ -129,8 +129,11 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `env-protection` | Blocks reads of .env files to prevent leaking secrets |
+| `notes-guard` |  |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
+| `repo-notes` |  |
+| `tui-lazygit` |  |
 
 ## Publishing
 
