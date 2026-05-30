@@ -112,7 +112,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  |  |
 | `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
 | `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default |  |  |
-| `/note-reference` | Load one or more notes for the current repository into context | default |  |  |
+| `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default |  |  |
 | `/notes-list` | List notes for the current repository, optionally filtered by tag | default |  |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
