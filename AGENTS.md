@@ -6,7 +6,9 @@ Instructions for coding agents working in this repository.
 
 This repo is a published snapshot of OpenCode configuration from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles).
 
-Source files: [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode)
+OpenCode config source: [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode)
+
+Shared skills source: [`agents/.agents/skills/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.agents/skills)
 
 Do not edit files here directly. Make changes in the [source dotfiles repo](https://github.com/timmo001/dotfiles) and push — a GitHub Actions workflow publishes automatically.
 
