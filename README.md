@@ -155,7 +155,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | Plugin | Description |
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
-| `env-protection` | Blocks reads of .env files to prevent leaking secrets |
+| `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `notes-guard` |  |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
