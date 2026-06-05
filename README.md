@@ -111,7 +111,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `ask` | Ask clarifying questions before taking action |
 | `build-ask` | Build agent that executes clear tasks and relies on permissions for write actions |
 | `build-locked` | Build agent that can edit files but cannot run shell commands |
-| `general-readonly` | General-style parallel subagent that researches and runs commands but cannot modify workspace files via file tools (for delegation from read-only primaries). |
+| `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
 | `reviewer` | Reviews code for quality, bugs, security, and best practices |
 
