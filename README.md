@@ -160,6 +160,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
 | `repo-notes` |  |
+| `tui-dot-git-diff` |  |
 | `tui-lazygit` |  |
 
 ## Publishing
