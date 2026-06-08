@@ -74,6 +74,7 @@ The config is built around a few patterns:
 | `cleanup-unnecessary-variables` | Safe unnecessary-variable cleanup guidance for code review and refactoring. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
 | `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin |  |
+| `grill-questions` | Run an extended one-question-at-a-time planning interview to stress-test a proposed change before implementation. Use when the user says grill, grill me, stress-test this plan, ask more questions, or wants to expand the planning/question window instead of moving straight to a plan. |  | `ask-questions-if-underspecified` skill |
 | `handoff` | Compact the current conversation into a handoff document for another agent to pick up. |  |  |
 | `home-assistant-frontend` | Home Assistant frontend development with Lit Web Components and TypeScript. Use when working in the Home Assistant frontend repo, editing ha-* components, reviewing HA PRs, or applying HA-specific conventions (localization, theming, dialogs, panels, cards). |  | `cleanup-unnecessary-variables` skill,`home-assistant-lazy-context` skill,`home-assistant-list-components` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `home-assistant-lazy-context` | Home Assistant frontend lazy-context, memoization, and `hass` removal guidance. Use when migrating Lit components from `hass!: HomeAssistant`, `.hass=${...}`, or broad `hass` access to context slices. |  |  |
@@ -93,7 +94,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Skill | Origin | Local Changes | Requires | Works with |
 |---|---|---|---|---|
-| `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  |  |
+| `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grill-questions` skill |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnose) | Yes |  |  |
 | `effect` | [anomalyco/opencode](https://github.com/anomalyco/opencode/tree/dev/.opencode/skills/effect) | No |  |  |
@@ -112,6 +113,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `build-ask` | Build agent that executes clear tasks and relies on permissions for write actions |
 | `build-locked` | Build agent that can edit files but cannot run shell commands |
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
+| `grill` | Extended read-only planning interview agent for one-question-at-a-time grilling |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
 | `reviewer` | Reviews code for quality, bugs, security, and best practices |
 
@@ -126,6 +128,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask | `fallow` skill |  |
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | ask | `fallow` skill |  |
+| `/grill` | Stress-test a proposed change with one-question-at-a-time planning questions | grill | `grill-questions` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/handoffs-list` | List handoff notes for the current repository | default |  | `handoff` skill |
 | `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill,`home-assistant-list-components` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
