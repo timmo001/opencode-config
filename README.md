@@ -88,6 +88,7 @@ The config is built around a few patterns:
 | `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  | `fallow` skill |
+| `writing-style` | Write commit messages, PR and issue text, docs, code comments, and user-facing copy in the project owner's voice: concise, human, UK English, no em-dashes, no robotic or marketing tone. Use when authoring or editing any commit message, pull request or issue description, README or docs, code comment, or user-facing string (notifications, UI labels, toasts, error messages). Defer to a repo's established house style when it has one; otherwise this sets the default voice. |  |  |
 
 ### From External Sources
 
