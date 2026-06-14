@@ -2,7 +2,7 @@
 
 Shared [OpenCode](https://opencode.ai) skills, agents, plugins, and commands.
 
-Published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles) — OpenCode config at [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode) and shared skills at [`agents/.agents/skills/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.agents/skills).
+Generated and published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles) — OpenCode config at [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode) and shared skills at [`agents/.agents/skills/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.agents/skills).
 
 ## Installation
 
@@ -161,12 +161,12 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
-| `notes-guard` |  |
+| `notes-guard` | Restricts file tools to the repository notes directory for note commands |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
-| `repo-notes` |  |
-| `tui-dot-git-diff` |  |
-| `tui-lazygit` |  |
+| `repo-notes` | Routes OpenCode note commands through `dot note` against the notes vault |
+| `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
+| `tui-lazygit` | Registers a TUI keybinding to open lazygit |
 
 ## Publishing
 

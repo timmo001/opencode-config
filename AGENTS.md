@@ -4,7 +4,7 @@ Instructions for coding agents working in this repository.
 
 ## Source
 
-This repo is a published snapshot of OpenCode configuration from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles).
+This repo is generated from the OpenCode configuration in [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles).
 
 OpenCode config source: [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode)
 
