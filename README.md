@@ -127,8 +127,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/all-lit-skills` | Apply all Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `lit-rendering` skill |
 | `/all-ts-skills` | Apply all TypeScript-specific skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`fallow` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
-| `/commit-push` | Commit current changes via the dot git-commit gateway, then push the branch | default | `git-commit` skill |  |
-| `/commit` | Commit current changes via the dot git-commit gateway in the maintainer's one-line style | default | `git-commit` skill |  |
+| `/commit-push` | Commit current changes via the dot git-commit gateway, then push the branch | default | `git-commit` skill,`writing-style` skill |  |
+| `/commit` | Commit current changes via the dot git-commit gateway in the maintainer's one-line style | default | `git-commit` skill,`writing-style` skill |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask | `fallow` skill |  |
