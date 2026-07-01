@@ -87,6 +87,7 @@ The config is built around a few patterns:
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
 | `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |
+| `research` | Investigate a topic against primary sources and return cited findings. Use when the user wants a topic researched, docs, API, or spec facts gathered, an external library or GitHub behaviour verified, or reading legwork delegated to a background agent. |  |  |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  | `fallow` skill |
 | `writing-style` | Write commit messages, PR and issue text, docs, code comments, and user-facing copy in the project owner's voice: concise, human, UK English, no em-dashes, no robotic or marketing tone. Use when authoring or editing any commit message, pull request or issue description, README or docs, code comment, or user-facing string (notifications, UI labels, toasts, error messages). Defer to a repo's established house style when it has one; otherwise this sets the default voice. |  |  |
@@ -118,6 +119,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
 | `grill` | Extended read-only planning interview agent for one-question-at-a-time grilling |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
+| `researcher` | Research a topic against primary sources and return cited findings |
 | `reviewer` | Reviews code for quality, bugs, security, and best practices |
 
 ## Commands
@@ -155,6 +157,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/refactor-current-work` | Refactor current branch work while preserving behaviour | refactorer | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/refactor-enforce-types` | Refactor - enforce TypeScript type safety in current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`types-enforce-ts` skill |  |
 | `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`remove-single-use-functions` skill |  |
+| `/research` | Research a topic against primary sources and return cited findings | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/review-current-work` | Review current branch work with BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`pr-review` skill |  |
 
