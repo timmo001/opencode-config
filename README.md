@@ -84,7 +84,7 @@ The config is built around a few patterns:
 | `home-assistant-lit-rendering` | Home Assistant Lit rendering extensions for HA components and context-aware picker callback shape. |  | `lit-rendering` skill |
 | `import-external-skill` | Import skills from external repos into the local dotfiles skill library. Use when pulling in a skill from a public repo, reviewing an external skill set for useful additions, or adapting external skill content into existing local skills. |  |  |
 | `lit-rendering` | Lit rendering and picker callback-shape guidance for editing and reviewing Lit components. |  |  |
-| `pitchfork-dev-servers` | Prefer pitchfork-backed workflows for long-running local dev servers and check available MCP/tooling first. Use when starting, stopping, restarting, checking, or tailing development servers, background servers, `pitchfork.toml`, pitchfork MCP tools, or local AGENTS/mise tasks that mention pitchfork. |  |  |
+| `pitchfork-dev-servers` | Manage long-running local dev servers by precedence - the project's own AGENTS.md workflow first, framework-native background mode next, then pitchfork as the fallback. Use when starting, stopping, restarting, checking, or tailing development servers, background servers, `pitchfork.toml`, pitchfork MCP tools, or local AGENTS/mise tasks that mention pitchfork. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
 | `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |
@@ -171,7 +171,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `notes-guard` | Restricts file tools to the repository notes directory for note commands |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
-| `pitchfork-dev-server-guard` | Redirects foreground dev-server shell commands to pitchfork-backed repo tasks |
+| `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
 | `repo-notes` | Routes OpenCode note commands through `dot note` against the notes vault |
 | `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
