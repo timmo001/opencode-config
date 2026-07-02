@@ -117,6 +117,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `ask` | Ask clarifying questions before taking action |
 | `build-ask` | Build agent that executes clear tasks and relies on permissions for write actions |
 | `build-locked` | Build agent that can edit files but cannot run shell commands |
+| `fallow` | Run explicit Fallow project analysis and audits |
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
 | `grill` | Extended read-only planning interview agent for one-question-at-a-time grilling |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
@@ -134,8 +135,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/commit` | Commit current changes via the dot git-commit gateway in the maintainer's one-line style | default | `git-commit` skill,`writing-style` skill |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
-| `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | ask | `fallow` skill |  |
-| `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | ask | `fallow` skill |  |
+| `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | fallow | `fallow` skill |  |
+| `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | fallow | `fallow` skill |  |
 | `/grill` | Stress-test a proposed change with one-question-at-a-time planning questions | grill | `grill-questions` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/handoffs-list` | List handoff notes for the current repository | default |  | `handoff` skill |
