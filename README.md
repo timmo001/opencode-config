@@ -170,7 +170,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `notes-guard` | Restricts file tools to the repository notes directory for note commands |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
-| `pitchfork-dev-server-guard` | Routes foreground dev-server shell commands to pitchfork-backed repo tasks |
+| `pitchfork-dev-server-guard` | Redirects foreground dev-server shell commands to pitchfork-backed repo tasks |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
 | `repo-notes` | Routes OpenCode note commands through `dot note` against the notes vault |
 | `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
