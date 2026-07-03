@@ -173,7 +173,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
-| `repo-notes` | Routes OpenCode note commands through `dot note` against the notes vault |
+| `repo-notes` | Injects repo-note context into OpenCode note commands |
 | `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
 | `tui-lazygit` | Registers a TUI keybinding to open lazygit |
 
