@@ -169,6 +169,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
+| `mcp-repo-gate` | Per-repo MCP server gating for OpenCode |
 | `notes-guard` | Restricts file tools to the repository notes directory for note commands |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
