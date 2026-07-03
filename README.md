@@ -71,7 +71,7 @@ The config is built around a few patterns:
 |---|---|---|---|
 | `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. | `branch-context` plugin |  |
 | `check-skill-updates` | Check imported skills for upstream changes and apply updates. Use when reviewing whether externally imported skills have new upstream content, or when `dot skill-updates` reports available changes. |  | `import-external-skill` skill |
-| `cleanup-unnecessary-variables` | Safe unnecessary-variable cleanup guidance for code review and refactoring. |  |  |
+| `cleanup-unnecessary-variables` | Safe removal of unnecessary variables during code review and refactoring. Use when simplifying code, inlining temporary or single-use variables, or removing redundant aliases, while preserving runtime behaviour, evaluation order, and variables kept for readability or debugging. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
 | `fallow-coexistence` | Guidance for using Fallow alongside code-quality and framework skills without conflict. Use when running Fallow or acting on its findings — applying fix/suppress suggestions, interpreting dead-code or complexity output, or analysing Effect, Lit, or Home Assistant code — to decide what to apply, what to verify first, and how to configure Fallow. | `branch-context` plugin | `branch-context-consumer` skill,`cleanup-unnecessary-variables` skill,`diagnose` skill,`effect` skill,`fallow` skill,`git-context` skill,`improve-codebase-architecture` skill,`lit-rendering` skill,`pr-review` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `git-commit` | Commit workflow using the dot git-commit gateway in the maintainer's concise one-line style. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer repeat authorisation from an earlier commit or push; never run raw git commit. |  | `writing-style` skill |
@@ -87,12 +87,12 @@ The config is built around a few patterns:
 | `pitchfork-dev-servers` | Manage long-running local dev servers by precedence - the project's own AGENTS.md workflow first, framework-native background mode next, then pitchfork as the fallback. Use when starting, stopping, restarting, checking, or tailing development servers, background servers, `pitchfork.toml`, pitchfork MCP tools, or local AGENTS/mise tasks that mention pitchfork. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
-| `remove-single-use-functions` | Safe single-use function removal guidance for code review and refactoring. |  |  |
+| `remove-single-use-functions` | Safe inlining and removal of single-use functions during code review and refactoring. Use when a local, non-exported helper has exactly one real call site and inlining preserves behaviour and readability. |  |  |
 | `research` | Investigate a topic against primary sources and return cited findings. Use when the user wants a topic researched, docs, API, or spec facts gathered, an external library or GitHub behaviour verified, or reading legwork delegated to a background agent. |  |  |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  | `fallow` skill |
 | `writing-dot-skills` | Craft for authoring skills that select reliably and stay lean - writing the description for correct auto-selection, matching instruction freedom to task fragility, deciding when to split into references or add scripts, and running quality and anti-pattern checks. Use when creating or revising a skill's content or structure. For the file schema, frontmatter fields, and placement, use customize-opencode. |  |  |
-| `writing-style` | Write commit messages, PR and issue text, docs, code comments, and user-facing copy in the project owner's voice: concise, human, UK English, no em-dashes, no robotic or marketing tone. Use when authoring or editing any commit message, pull request or issue description, README or docs, code comment, or user-facing string (notifications, UI labels, toasts, error messages). Defer to a repo's established house style when it has one; otherwise this sets the default voice. |  |  |
+| `writing-style` | Write commit messages, PR and issue text, docs (README), code comments, and user-facing strings (notifications, UI labels, toasts, error messages) in the project owner's voice: concise, human, UK English, no em-dashes, no robotic or marketing tone. Use when authoring or editing any of these. Defer to a repo's established house style when it has one; otherwise this sets the default voice. |  |  |
 
 ### From External Sources
 
@@ -168,6 +168,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | Plugin | Description |
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
+| `context-capture` | Opt-in capture of the assembled starter context for token profiling |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `mcp-repo-gate` | Per-repo MCP server gating for OpenCode |
 | `notes-guard` | Restricts file tools to the repository notes directory for note commands |
