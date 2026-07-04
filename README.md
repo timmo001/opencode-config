@@ -163,7 +163,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/research` | Research a topic against primary sources and return cited findings | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/review-current-work` | Review current branch work with BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`pr-review` skill |  |
-| `/update-docs` | Keep documentation current with recent code changes, via git-context and delegated investigation | build-ask | `maintain-docs` skill,`writing-style` skill |  |
+| `/update-docs` | Keep documentation current with recent code changes, via git-context and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
 
