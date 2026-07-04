@@ -148,7 +148,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/home-assistant/replace-spacing` | Replace hardcoded spacing values with ha-space tokens from core.globals.ts | default |  |  |
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
 | `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | plan |  |  |
-| `/inject-context` | Inject branch context and optionally execute an instruction | default |  |  |
+| `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
+| `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
 | `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
 | `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default |  |  |
@@ -178,6 +179,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
 | `repo-notes` | Injects repo-note context into OpenCode note commands |
+| `stack-context` | Injects codebase stack-context blocks into command prompts before execution |
 | `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
 | `tui-lazygit` | Registers a TUI keybinding to open lazygit |
 
