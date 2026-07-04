@@ -179,7 +179,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
 | `repo-notes` | Injects repo-note context into OpenCode note commands |
-| `stack-context` | Injects codebase stack-context blocks into command prompts before execution |
+| `stack-context` | Injects codebase stack-context blocks into prompts |
 | `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
 | `tui-lazygit` | Registers a TUI keybinding to open lazygit |
 
