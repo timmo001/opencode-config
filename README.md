@@ -179,7 +179,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `context-capture` | Opt-in capture of the assembled starter context for token profiling |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `mcp-repo-gate` | Per-repo MCP server gating for OpenCode |
-| `notes-guard` | Restricts file tools to the repository notes directory for note commands |
+| `notes-guard` | Blocks direct file and shell access to the repository notes vault |
 | `notification` | Plays a desktop notification sound when agent tasks complete |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
