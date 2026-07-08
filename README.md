@@ -74,8 +74,9 @@ The config is built around a few patterns:
 | `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. | `branch-context` plugin |  |
 | `check-skill-updates` | Check imported skills for upstream changes and apply updates. Use when reviewing whether externally imported skills have new upstream content, or when `dot skill-updates` reports available changes. |  | `import-external-skill` skill |
 | `cleanup-unnecessary-variables` | Safe removal of unnecessary variables during code review and refactoring. Use when simplifying code, inlining temporary or single-use variables, or removing redundant aliases, while preserving runtime behaviour, evaluation order, and variables kept for readability or debugging. |  |  |
+| `code-review` | Review code changes along two axes - Standards (does it follow the repo's conventions, plus a Fowler code-smell baseline?) and Spec (does it implement what the originating issue or spec asked for?). Use when reviewing a pull request, a branch, work-in-progress changes, or a diff. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
-| `fallow-coexistence` | Guidance for using Fallow alongside code-quality and framework skills without conflict. Use when running Fallow or acting on its findings — applying fix/suppress suggestions, interpreting dead-code or complexity output, or analysing Effect, Lit, or Home Assistant code — to decide what to apply, what to verify first, and how to configure Fallow. | `branch-context` plugin | `branch-context-consumer` skill,`cleanup-unnecessary-variables` skill,`diagnose` skill,`effect` skill,`fallow` skill,`git-context` skill,`improve-codebase-architecture` skill,`lit-rendering` skill,`pr-review` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
+| `fallow-coexistence` | Guidance for using Fallow alongside code-quality and framework skills without conflict. Use when running Fallow or acting on its findings — applying fix/suppress suggestions, interpreting dead-code or complexity output, or analysing Effect, Lit, or Home Assistant code — to decide what to apply, what to verify first, and how to configure Fallow. | `branch-context` plugin | `branch-context-consumer` skill,`cleanup-unnecessary-variables` skill,`code-review` skill,`diagnose` skill,`effect` skill,`fallow` skill,`git-context` skill,`improve-codebase-architecture` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `git-commit` | Commit workflow using the dot git-commit gateway in the maintainer's concise one-line style. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer repeat authorisation from an earlier commit or push; never run raw git commit. |  | `writing-style` skill |
 | `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin |  |
 | `grill-questions` | Run an extended one-question-at-a-time planning interview to stress-test a proposed change before implementation. Use when the user says grill, grill me, stress-test this plan, ask more questions, or wants to expand the planning/question window instead of moving straight to a plan. |  | `ask-questions-if-underspecified` skill |
@@ -89,7 +90,6 @@ The config is built around a few patterns:
 | `maintain-docs` | Keep documentation current and accurate with recent code changes, across in-code docs (docstrings, annotations, comments), in-repo docs sites, and external docs repositories. Use when asked to update docs, check docs accuracy, keep documentation current, document recent changes, refresh docstrings or annotations, or catch documentation up with the codebase. Matches the codebase's existing documentation density and stops before commit. |  |  |
 | `pitchfork-dev-servers` | Manage long-running local dev servers by precedence - the project's own AGENTS.md workflow first, framework-native background mode next, then pitchfork as the fallback. Use when starting, stopping, restarting, checking, or tailing development servers, background servers, `pitchfork.toml`, pitchfork MCP tools, or local AGENTS/mise tasks that mention pitchfork. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
-| `pr-review` | Guidelines for reviewing pull requests - what to analyze, review etiquette, and output formatting |  |  |
 | `remove-single-use-functions` | Safe inlining and removal of single-use functions during code review and refactoring. Use when a local, non-exported helper has exactly one real call site and inlining preserves behaviour and readability. |  |  |
 | `research` | Investigate a topic against primary sources and return cited findings. Use when the user wants a topic researched, docs, API, or spec facts gathered, an external library or GitHub behaviour verified, or reading legwork delegated to a background agent. |  |  |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
@@ -104,15 +104,18 @@ These skills were imported from other repos. Some are used as-is; others have be
 | Skill | Origin | Local Changes | Requires | Works with |
 |---|---|---|---|---|
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grill-questions` skill |
+| `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | No |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  |  |
+| `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) | Yes |  |  |
 | `effect` | [anomalyco/opencode](https://github.com/anomalyco/opencode/tree/dev/.opencode/skills/effect) | No |  |  |
 | `fallow` | [fallow-rs/fallow-skills](https://github.com/fallow-rs/fallow-skills/tree/main/fallow/skills/fallow) | No |  |  |
 | `herdr` | [ogulcancelik/herdr](https://github.com/ogulcancelik/herdr/blob/master/SKILL.md) | No |  |  |
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
-| `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | No |  |  |
+| `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grill-questions` skill |
 | `motion-choreography-patterns` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/motion-choreography-patterns) | No |  |  |
 | `opentui` | [anomalyco/opentui](https://github.com/anomalyco/opentui/tree/main/packages/web/src/content) | Yes |  |  |
+| `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | No |  |  |
 | `vercel-cli` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/vercel-cli) | No |  |  |
 | `vercel-deployments-cicd` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/deployments-cicd) | No |  |  |
 | `vercel-env-vars` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/env-vars) | No |  |  |
@@ -138,6 +141,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/all-lit-skills` | Apply all Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `lit-rendering` skill |
 | `/all-ts-skills` | Apply all TypeScript-specific skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`fallow` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
+| `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/commit-push` | Commit current changes via the dot git-commit gateway, then push the branch for this explicit request only | default | `git-commit` skill,`writing-style` skill |  |
 | `/commit` | Commit current changes via the dot git-commit gateway in the maintainer's one-line style | default | `git-commit` skill,`writing-style` skill |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
@@ -169,7 +173,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`remove-single-use-functions` skill |  |
 | `/research` | Research a topic against primary sources and return cited findings | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
-| `/review-current-work` | Review current branch work with BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`pr-review` skill |  |
 | `/update-docs` | Keep documentation current with recent code changes, via git-context and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
