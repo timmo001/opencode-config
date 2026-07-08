@@ -185,6 +185,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
 | `repo-notes` | Injects repo-note context into OpenCode note commands |
 | `stack-context` | Injects codebase stack-context blocks into prompts |
+| `subagent-chrome-devtools-guard` | Blocks Chrome DevTools tools from delegated subagent sessions |
 | `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
 | `tui-lazygit` | Registers a TUI keybinding to open lazygit |
 
