@@ -19,6 +19,7 @@ skills/      OpenCode skills (SKILL.md per directory, optional references/)
 agents/      Agent definitions (YAML frontmatter + Markdown body)
 commands/    Slash commands (YAML frontmatter + Markdown workflow)
 plugins/     Lifecycle plugins (ESM TypeScript)
+lib/         Shared modules imported by plugins
 ```
 
 ## Skills
