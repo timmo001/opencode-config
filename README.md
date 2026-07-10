@@ -132,7 +132,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
 | `grill` | Extended read-only planning interview agent for one-question-at-a-time grilling |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
-| `researcher` | Research a topic against primary sources and return cited findings |
+| `researcher-readonly` | Cited primary-source research subagent that cannot delegate further |
+| `researcher` | Interactive primary-source research agent that may delegate one layer of read-only legwork |
 | `reviewer` | Reviews code for quality, bugs, security, and best practices |
 
 ## Commands
@@ -185,9 +186,9 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `mcp-repo-gate` | Per-repo MCP server gating for OpenCode |
 | `notes-guard` | Blocks direct file and shell access to the repository notes vault |
-| `notification` | Plays a desktop notification sound when agent tasks complete |
+| `notification` | Sends contextual desktop and terminal notifications for agent events |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
-| `readonly-subagent-task-guard` | Forces read-only primary agents to delegate only to non-modifying subagents |
+| `readonly-subagent-shell-guard` | Rejects shell syntax that can turn read-only subagent commands into writes |
 | `repo-notes` | Injects repo-note context into OpenCode note commands |
 | `stack-context` | Injects codebase stack-context blocks into prompts |
 | `subagent-chrome-devtools-guard` | Blocks Chrome DevTools tools from delegated subagent sessions |
