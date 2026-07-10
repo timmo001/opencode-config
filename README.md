@@ -80,7 +80,6 @@ The config is built around a few patterns:
 | `fallow-coexistence` | Guidance for using Fallow alongside code-quality and framework skills without conflict. Use when running Fallow or acting on its findings — applying fix/suppress suggestions, interpreting dead-code or complexity output, or analysing Effect, Lit, or Home Assistant code — to decide what to apply, what to verify first, and how to configure Fallow. | `branch-context` plugin | `branch-context-consumer` skill,`cleanup-unnecessary-variables` skill,`code-review` skill,`diagnose` skill,`effect` skill,`fallow` skill,`git-context` skill,`improve-codebase-architecture` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `git-commit` | Commit workflow using the dot git-commit gateway in the maintainer's concise one-line style. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer repeat authorisation from an earlier commit or push; never run raw git commit. |  | `writing-style` skill |
 | `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin |  |
-| `grill-questions` | Run an extended one-question-at-a-time planning interview to stress-test a proposed change before implementation. Use when the user says grill, grill me, stress-test this plan, ask more questions, or wants to expand the planning/question window instead of moving straight to a plan. |  | `ask-questions-if-underspecified` skill |
 | `handoff` | Compact the current conversation into a handoff document for another agent to pick up. |  |  |
 | `home-assistant-frontend` | Home Assistant frontend development with Lit Web Components and TypeScript. Use when working in the Home Assistant frontend repo, editing ha-* components, reviewing HA PRs, or applying HA-specific conventions (localization, theming, dialogs, panels, cards). |  | `cleanup-unnecessary-variables` skill,`home-assistant-lazy-context` skill,`home-assistant-list-components` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `home-assistant-lazy-context` | Home Assistant frontend lazy-context, memoization, and `hass` removal guidance. Use when migrating Lit components from `hass!: HomeAssistant`, `.hass=${...}`, or broad `hass` access to context slices. |  |  |
@@ -111,6 +110,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) | Yes |  |  |
 | `effect` | [anomalyco/opencode](https://github.com/anomalyco/opencode/tree/dev/.opencode/skills/effect) | No |  |  |
 | `fallow` | [fallow-rs/fallow-skills](https://github.com/fallow-rs/fallow-skills/tree/main/fallow/skills/fallow) | No |  |  |
+| `grill-questions` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  | `ask-questions-if-underspecified` skill |
 | `herdr` | [ogulcancelik/herdr](https://github.com/ogulcancelik/herdr/blob/master/SKILL.md) | No |  |  |
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grill-questions` skill |
@@ -130,7 +130,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `build-locked` | Build agent that can edit files but cannot run shell commands |
 | `fallow` | Run explicit Fallow project analysis and audits |
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
-| `grill` | Extended read-only planning interview agent for one-question-at-a-time grilling |
+| `grill` | Read-only planning stress-test agent for light or full one-question-at-a-time grilling |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
 | `researcher-readonly` | Cited primary-source research subagent that cannot delegate further |
 | `researcher` | Interactive primary-source research agent that may delegate one layer of read-only legwork |
@@ -150,7 +150,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | fallow | `fallow` skill |  |
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | fallow | `fallow` skill |  |
-| `/grill` | Stress-test a proposed change with one-question-at-a-time planning questions | grill | `grill-questions` skill |  |
+| `/grill` | Stress-test a proposed change with light or full one-question-at-a-time grilling | grill | `grill-questions` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/handoffs-list` | List handoff notes for the current repository | default |  | `handoff` skill |
 | `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill,`home-assistant-list-components` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
