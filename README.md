@@ -91,7 +91,7 @@ The config is built around a few patterns:
 | `pitchfork-dev-servers` | Manage long-running local dev servers by precedence - the project's own AGENTS.md workflow first, framework-native background mode next, then pitchfork as the fallback. Use when starting, stopping, restarting, checking, or tailing development servers, background servers, `pitchfork.toml`, pitchfork MCP tools, or local AGENTS/mise tasks that mention pitchfork. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `remove-single-use-functions` | Safe inlining and removal of single-use functions during code review and refactoring. Use when a local, non-exported helper has exactly one real call site and inlining preserves behaviour and readability. |  |  |
-| `research` | Investigate a topic against primary sources and return cited findings. Use when the user wants a topic researched, docs, API, or spec facts gathered, an external library or GitHub behaviour verified, or reading legwork delegated to a background agent. |  |  |
+| `research` | Investigate a topic against primary sources and return cited findings, comparing credible maintainer and contributor perspectives when judgement is involved. Use when the user wants a topic researched, docs, API, or spec facts gathered, an external library or GitHub behaviour verified, competing views compared, or reading legwork delegated to a background agent. |  |  |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  | `fallow` skill |
 | `writing-dot-skills` | Craft for authoring skills that select reliably and stay lean - writing the description for correct auto-selection, matching instruction freedom to task fragility, deciding when to split into references or add scripts, and running quality and anti-pattern checks. Use when creating or revising a skill's content or structure. For the file schema, frontmatter fields, and placement, use customize-opencode. |  |  |
@@ -132,8 +132,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
 | `grill` | Read-only planning stress-test agent for light or full one-question-at-a-time grilling |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
-| `researcher-readonly` | Cited primary-source research subagent that cannot delegate further |
-| `researcher` | Interactive primary-source research agent that may delegate one layer of read-only legwork |
+| `researcher-readonly` | Primary-source research subagent that compares claim-specific evidence and cannot delegate further |
+| `researcher` | Interactive primary-source research agent that compares claim-specific evidence and may delegate one layer of read-only legwork |
 | `reviewer` | Reviews code for quality, bugs, security, and best practices |
 
 ## Commands
@@ -173,7 +173,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/refactor-current-work` | Refactor current branch work while preserving behaviour | refactorer | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/refactor-enforce-types` | Refactor - enforce TypeScript type safety in current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`types-enforce-ts` skill |  |
 | `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`remove-single-use-functions` skill |  |
-| `/research` | Research a topic against primary sources and return cited findings | researcher |  |  |
+| `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/update-docs` | Keep documentation current with recent code changes, via git-context and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
 
