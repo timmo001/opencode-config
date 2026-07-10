@@ -175,7 +175,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`remove-single-use-functions` skill |  |
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
-| `/update-docs` | Keep documentation current with recent code changes, via git-context and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
+| `/update-docs` | Keep documentation current with recent code changes, via Context MCP and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
 
