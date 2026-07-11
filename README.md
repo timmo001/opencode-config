@@ -107,6 +107,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grill-questions` skill |
 | `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | No |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
+| `ctx-agent-history-search` | [ctxrs/ctx](https://github.com/ctxrs/ctx/tree/main/skills/ctx-agent-history-search) | No |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  |  |
 | `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) | Yes |  |  |
 | `effect` | [anomalyco/opencode](https://github.com/anomalyco/opencode/tree/dev/.opencode/skills/effect) | No |  |  |
