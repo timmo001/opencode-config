@@ -172,6 +172,9 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/notes-list` | List notes for the current repository, optionally filtered by tag | default |  |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan | `staged-implementation` skill |  |
+| `/plannotator-annotate` | Open interactive annotation UI for a file, folder, or URL | default |  |  |
+| `/plannotator-last` | Annotate the last assistant message | default |  |  |
+| `/plannotator-review` | Open interactive code review for current changes or a PR URL; pass --git to force Git in JJ workspaces | default |  |  |
 | `/refactor-cleanup-variables` | Refactor - inline and remove unnecessary variables from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`cleanup-unnecessary-variables` skill |  |
 | `/refactor-current-work` | Refactor current branch work while preserving behaviour | refactorer | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/refactor-enforce-types` | Refactor - enforce TypeScript type safety in current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`types-enforce-ts` skill |  |
