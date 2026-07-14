@@ -154,6 +154,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fallow-audit` | Audit changed JavaScript or TypeScript code with Fallow | fallow | `fallow` skill |  |
 | `/fallow-project-analyse` | Analyse a JavaScript or TypeScript project with Fallow | fallow | `fallow` skill |  |
+| `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a proposed change with light or full one-question-at-a-time grilling | grill | `grill-questions` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/handoffs-list` | List handoff notes for the current repository | default |  | `handoff` skill |
