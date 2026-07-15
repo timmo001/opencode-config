@@ -63,7 +63,7 @@ Place it at `~/.config/opencode/opencode.json` (or `opencode.jsonc` for comments
 The config is built around a few patterns:
 
 - **Branch context injection** — The `branch-context` plugin pre-computes git and PR state once per command and injects it as structured XML. Commands that need current-branch context declare a dependency on this plugin instead of running their own `git`/`gh` calls.
-- **Graduated agent permissions** — Agents range from workspace-read-only (`reviewer`, `ask`) through ask-gated (`build-ask`) to edit-capable (`refactorer`, `build-locked`). Read-only primary agents use native task allowlists, while terminal read-only subagents cannot delegate further.
+- **Graduated agent permissions** — Agents range from workspace-read-only (`reviewer`, `ask`) through ask-gated (`build-ask`) to edit-capable (`refactorer`). Read-only primary agents use native task allowlists, while terminal read-only subagents cannot delegate further.
 - **Scoped cleanup commands** — Commands like `/refactor-enforce-types`, `/refactor-cleanup-variables`, and `/refactor-remove-single-use` combine branch-context work-scope with a matching skill and route through the `refactorer` agent, keeping changes within the current git diff.
 - **Skill-based routing** — Commands are thin wrappers that name an agent, declare required skills, and state whether branch context is needed. The workflow logic lives in skills and plugins, not in the command itself.
 - **Secret protection** — The `env-protection` plugin blocks reads of `.env` files (except `.env.example`) across all agents.
@@ -131,7 +131,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|
 | `ask` | Ask clarifying questions before taking action |
 | `build-ask` | Build agent that executes clear tasks and relies on permissions for write actions |
-| `build-locked` | Build agent that can edit files but cannot run shell commands |
 | `fallow` | Run explicit Fallow project analysis and audits |
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
 | `grill` | Read-only planning stress-test agent for light or full one-question-at-a-time grilling |
