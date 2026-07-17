@@ -191,6 +191,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `context-capture` | Opt-in capture of the assembled starter context for token profiling |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
+| `generated-artifact-guard` | Blocks direct mutation of generated dotfiles artefacts |
 | `mcp-repo-gate` | Per-repo MCP server gating for OpenCode |
 | `notes-guard` | Blocks direct file and shell access to the repository notes vault |
 | `notification` | Sends contextual desktop notifications and terminal attention for agent events |
