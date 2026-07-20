@@ -118,6 +118,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `hunk-review` | [modem-dev/hunk](https://github.com/modem-dev/hunk/tree/main/skills/hunk-review) | No |  |  |
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grill-questions` skill |
 | `motion-choreography-patterns` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/motion-choreography-patterns) | No |  |  |
+| `notes-mcp` | [timmo001/notes](https://github.com/timmo001/notes/tree/main/.agents/skills/notes-mcp) | No |  |  |
 | `opentui` | [anomalyco/opentui](https://github.com/anomalyco/opentui/tree/main/packages/web/src/content) | Yes |  |  |
 | `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | No |  |  |
 | `vercel-cli` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/vercel-cli) | No |  |  |
