@@ -121,6 +121,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `notes-mcp` | [timmo001/notes](https://github.com/timmo001/notes/tree/main/.agents/skills/notes-mcp) | No |  |  |
 | `opentui` | [anomalyco/opentui](https://github.com/anomalyco/opentui/tree/main/packages/web/src/content) | Yes |  |  |
 | `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | No |  |  |
+| `terminal-control` | [anomalyco/terminal-control](https://github.com/anomalyco/terminal-control/tree/v0.4.1/skills/terminal-control) | No |  |  |
 | `vercel-cli` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/vercel-cli) | No |  |  |
 | `vercel-deployments-cicd` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/deployments-cicd) | No |  |  |
 | `vercel-env-vars` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/env-vars) | No |  |  |
