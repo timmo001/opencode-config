@@ -105,6 +105,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | Skill | Origin | Local Changes | Requires | Works with |
 |---|---|---|---|---|
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grill-questions` skill |
+| `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
 | `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | No |  | `handoff` skill |
 | `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | No |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
@@ -145,6 +146,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|---|---|---|
 | `/all-lit-skills` | Apply all Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `lit-rendering` skill |
 | `/all-ts-skills` | Apply all TypeScript-specific skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
+| `/bro` | Restate the previous response plainly and concisely | ask |  |  |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
 | `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/commit-push` | Split current changes into coherent commits, then push the completed series once | default | `git-commit` skill,`writing-style` skill |  |
