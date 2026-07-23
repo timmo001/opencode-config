@@ -5,6 +5,7 @@ description: Scan a codebase for deepening opportunities, present them as a visu
 # upstream-sha: 221ffca96736afefdc08ca7cf0b3965e9ea83f41
 # local-edits:
 #   - SKILL.md: rewired /grilling to the local grill-questions skill at Full intensity; generalised CONTEXT.md/docs-adr references to the project's domain docs (repo uses no fixed CONTEXT.md/ADR layout)
+#   - SKILL.md: architecture vocabulary preserves established domain and framework terms while describing their architectural roles
 #   - HTML-REPORT.md: generalised the ADR callout to a recorded-decision callout
 ---
 
@@ -14,7 +15,7 @@ Surface architectural friction and propose **deepening opportunities** — refac
 
 This command is _informed_ by the project's domain model and built on a shared design vocabulary:
 
-- Run the `/codebase-design` skill for the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, "the interface is the test surface", "one adapter = hypothetical seam, two = real"). Use these terms exactly in every suggestion — don't drift into "component," "service," "API," or "boundary."
+- Run the `/codebase-design` skill for the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, "the interface is the test surface", "one adapter = hypothetical seam, two = real"). Use those terms for architectural roles without renaming established domain concepts or framework constructs such as services, components, APIs, or boundaries; explain the mapping when it is not obvious.
 - If the project keeps a domain glossary or domain docs, the language there gives names to good seams; any recorded design decisions cover ground this command should not re-litigate. This repo uses no fixed `CONTEXT.md`/`docs/adr/` layout, so treat these as "if present" rather than required.
 
 ## Process
@@ -50,7 +51,7 @@ For each candidate, render a card with:
 
 End the report with a **Top recommendation** section: which candidate you'd tackle first and why.
 
-**Use the project's own domain vocabulary for the domain (from its glossary or domain docs, if it keeps one), and the `/codebase-design` vocabulary for the architecture.** If the project's domain language names an "Order," talk about "the Order intake module" — not "the FooBarHandler," and not "the Order service."
+**Use the project's own domain vocabulary for the domain (from its glossary or domain docs, if it keeps one), and the `/codebase-design` vocabulary for architectural roles.** If the project calls a concept the "Order service," keep that name and describe its architectural role precisely, for example: "the Order service is a shallow module whose interface leaks persistence details."
 
 **Recorded-decision conflicts**: if a candidate contradicts a design decision the project has already recorded, only surface it when the friction is real enough to warrant revisiting that decision. Mark it clearly in the card (e.g. a warning callout: _"contradicts a recorded decision — but worth reopening because…"_). Don't list every theoretical refactor a past decision forbids.
 

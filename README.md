@@ -78,7 +78,7 @@ The config is built around a few patterns:
 | `code-review` | Review code changes along two axes - Standards (does it follow the repo's conventions, plus a Fowler code-smell baseline?) and Spec (does it implement what the originating issue or spec asked for?). Use when reviewing a pull request, a branch, work-in-progress changes, or a diff. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
 | `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer authorisation for later changes; never run raw git commit. |  | `writing-style` skill |
-| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin |  |
+| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin,`git-commit` skill |  |
 | `handoff` | Compact the current conversation into a handoff document for another agent to pick up. |  |  |
 | `home-assistant-frontend` | Home Assistant frontend skill routing and personal engineering overlays. Use when editing or reviewing the Home Assistant frontend so repository-local `ha-frontend-*` skills stay authoritative and applicable Lit, TypeScript, cleanup, and HA companion skills are also loaded. | `home-assistant-lit-rendering` skill,`lit-rendering` skill |  |
 | `home-assistant-lazy-context` | Home Assistant frontend lazy-context, memoization, and `hass` removal guidance. Use when migrating Lit components from `hass!: HomeAssistant`, `.hass=${...}`, or broad `hass` access to context slices. |  |  |
@@ -108,7 +108,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grill-questions` skill |
 | `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
 | `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | No |  | `handoff` skill |
-| `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | No |  |  |
+| `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | Yes |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
 | `ctx-agent-history-search` | [ctxrs/ctx](https://github.com/ctxrs/ctx/tree/main/skills/ctx-agent-history-search) | No |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  |  |
@@ -116,7 +116,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `effect-service-design` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/effect-service-design) | No |  |  |
 | `effect` | [kitlangton/skills](https://github.com/kitlangton/skills/tree/main/skills/effect) | No |  |  |
 | `grill-questions` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  | `ask-questions-if-underspecified` skill |
-| `herdr` | [ogulcancelik/herdr](https://github.com/ogulcancelik/herdr/blob/master/SKILL.md) | No |  |  |
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
 | `hunk-review` | [modem-dev/hunk](https://github.com/modem-dev/hunk/tree/main/skills/hunk-review) | No |  |  |
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grill-questions` skill |
@@ -124,11 +123,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `notes-mcp` | [timmo001/notes](https://github.com/timmo001/notes/tree/main/.agents/skills/notes-mcp) | No |  |  |
 | `opentui` | [anomalyco/opentui](https://github.com/anomalyco/opentui/tree/main/packages/web/src/content) | Yes |  |  |
 | `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | No |  |  |
-| `teach` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) | No |  |  |
 | `terminal-control` | [anomalyco/terminal-control](https://github.com/anomalyco/terminal-control/tree/v0.4.1/skills/terminal-control) | No |  |  |
-| `vercel-cli` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/vercel-cli) | No |  |  |
-| `vercel-deployments-cicd` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/deployments-cicd) | No |  |  |
-| `vercel-env-vars` | [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin/tree/c9b1d8ff9351d90d20c0cf1e3d051d0ee100541d/skills/env-vars) | No |  |  |
 
 ## Agents
 
