@@ -148,7 +148,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/bro` | Restate the previous response plainly and concisely | ask |  |  |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
 | `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill |  |
-| `/commit-push` | Split current changes into coherent commits, then push the completed series once | default | `git-commit` skill |  |
+| `/commit-push` | Split current changes into coherent commits, then push each repository series once | default | `git-commit` skill |  |
 | `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
