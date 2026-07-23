@@ -77,7 +77,7 @@ The config is built around a few patterns:
 | `cleanup-unnecessary-variables` | Safe removal of unnecessary variables during code review and refactoring. Use when simplifying code, inlining temporary or single-use variables, or removing redundant aliases, while preserving runtime behaviour, evaluation order, and variables kept for readability or debugging. |  |  |
 | `code-review` | Review code changes along two axes - Standards (does it follow the repo's conventions, plus a Fowler code-smell baseline?) and Spec (does it implement what the originating issue or spec asked for?). Use when reviewing a pull request, a branch, work-in-progress changes, or a diff. |  |  |
 | `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
-| `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer authorisation for later changes; never run raw git commit. |  | `writing-style` skill |
+| `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer authorisation for later changes; never run raw git commit. |  |  |
 | `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin,`git-commit` skill |  |
 | `handoff` | Compact the current conversation into a handoff document for another agent to pick up. |  |  |
 | `home-assistant-frontend` | Home Assistant frontend skill routing and personal engineering overlays. Use when editing or reviewing the Home Assistant frontend so repository-local `ha-frontend-*` skills stay authoritative and applicable Lit, TypeScript, cleanup, and HA companion skills are also loaded. | `home-assistant-lit-rendering` skill,`lit-rendering` skill |  |
@@ -148,8 +148,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/bro` | Restate the previous response plainly and concisely | ask |  |  |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
 | `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill |  |
-| `/commit-push` | Split current changes into coherent commits, then push the completed series once | default | `git-commit` skill,`writing-style` skill |  |
-| `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill,`writing-style` skill |  |
+| `/commit-push` | Split current changes into coherent commits, then push the completed series once | default | `git-commit` skill |  |
+| `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `diagnose` skill,`shared-workflows` skill |  |
@@ -188,6 +188,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | Plugin | Description |
 |---|---|
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
+| `commit-context` | Injects session-attributed commit scope into commit command prompts |
 | `context-capture` | Opt-in capture of the assembled starter context for token profiling |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `generated-artifact-guard` | Blocks direct mutation of generated dotfiles artefacts |
