@@ -113,6 +113,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `ctx-agent-history-search` | [ctxrs/ctx](https://github.com/ctxrs/ctx/tree/main/skills/ctx-agent-history-search) | No |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  |  |
 | `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) | Yes |  |  |
+| `effect-service-design` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/effect-service-design) | No |  |  |
 | `effect` | [kitlangton/skills](https://github.com/kitlangton/skills/tree/main/skills/effect) | No |  |  |
 | `grill-questions` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  | `ask-questions-if-underspecified` skill |
 | `herdr` | [ogulcancelik/herdr](https://github.com/ogulcancelik/herdr/blob/master/SKILL.md) | No |  |  |
