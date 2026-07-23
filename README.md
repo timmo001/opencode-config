@@ -154,7 +154,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
 | `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a proposed change with light or full one-question-at-a-time grilling | grill | `grill-questions` skill |  |
-| `/handoff` | Write a handoff document for the next agent session | default |  |  |
+| `/handoff` | Write a handoff document for the next agent session | default | `notes-mcp` skill |  |
 | `/handoffs-list` | List handoff notes for the current repository | default |  | `handoff` skill |
 | `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `home-assistant-frontend` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill |
 | `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill | `home-assistant-lit-rendering` skill,`lit-rendering` skill |
@@ -166,8 +166,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
 | `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
-| `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
-| `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default |  |  |
+| `/note-append` | Append new notes to an existing note file for the current repository | default | `notes-mcp` skill |  |
+| `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default | `notes-mcp` skill |  |
 | `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default |  |  |
 | `/notes-list` | List notes for the current repository, optionally filtered by tag | default |  |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
