@@ -90,6 +90,7 @@ The config is built around a few patterns:
 | `maintain-docs` | Keep documentation current and accurate with recent code changes, across in-code docs (docstrings, annotations, comments), in-repo docs sites, and external docs repositories. Use when asked to update docs, check docs accuracy, keep documentation current, document recent changes, refresh docstrings or annotations, or catch documentation up with the codebase. Matches the codebase's existing documentation density and stops before commit. |  |  |
 | `pitchfork-dev-servers` | Manage long-running local dev servers by precedence - the project's own AGENTS.md workflow first, framework-native background mode next, then pitchfork as the fallback. Use when starting, stopping, restarting, checking, or tailing development servers, background servers, `pitchfork.toml`, pitchfork MCP tools, or local AGENTS/mise tasks that mention pitchfork. |  |  |
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
+| `plan` | Produce implementation-ready plans from the current conversation and repository context. Use when entering native plan mode, invoking /plan, or when a task needs concrete implementation sequencing before edits begin; do not use for one-question-at-a-time grilling. | `staged-implementation` skill |  |
 | `remove-single-use-functions` | Safe inlining and removal of single-use functions during code review and refactoring. Use when a local, non-exported helper has exactly one real call site and inlining preserves behaviour and readability. |  |  |
 | `research` | Investigate a topic against primary sources and return cited findings, comparing credible maintainer and contributor perspectives when judgement is involved. Use when the user wants a topic researched, docs, API, or spec facts gathered, an external library or GitHub behaviour verified, competing views compared, or reading legwork delegated to a background agent. |  |  |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
@@ -170,7 +171,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default |  |  |
 | `/notes-list` | List notes for the current repository, optionally filtered by tag | default |  |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
-| `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan | `staged-implementation` skill |  |
+| `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
 | `/plannotator-annotate` | Open interactive annotation UI for a file, folder, or URL | default |  |  |
 | `/plannotator-last` | Annotate the last assistant message | default |  |  |
 | `/plannotator-review` | Open interactive code review for current changes or a PR URL; pass --git to force Git in JJ workspaces | default |  |  |
