@@ -122,7 +122,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grill-questions` skill |
 | `motion-choreography-patterns` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/motion-choreography-patterns) | No |  |  |
 | `notes-mcp` | [timmo001/notes](https://github.com/timmo001/notes/tree/main/.agents/skills/notes-mcp) | No |  |  |
-| `opentui` | [anomalyco/opentui](https://github.com/anomalyco/opentui/tree/main/packages/web/src/content) | Yes |  |  |
+| `opentui` | [anomalyco/opentui](https://github.com/anomalyco/opentui/tree/main/packages/web/src/content) | No |  |  |
 | `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | No |  |  |
 | `terminal-control` | [anomalyco/terminal-control](https://github.com/anomalyco/terminal-control/tree/v0.4.1/skills/terminal-control) | No |  |  |
 
