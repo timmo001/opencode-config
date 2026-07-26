@@ -191,6 +191,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `commit-context` | Injects session-attributed commit scope into commit command prompts |
 | `context-capture` | Opt-in capture of the assembled starter context for token profiling |
+| `context-zone-warning` | Warns when long-context models enter less reliable context ranges |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `generated-artifact-guard` | Blocks direct mutation of generated dotfiles artefacts |
 | `mcp-repo-gate` | Per-repo MCP server gating for OpenCode |
