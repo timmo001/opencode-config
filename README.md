@@ -134,7 +134,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Agent | Description |
 |---|---|
-| `ask` | Ask clarifying questions before taking action |
 | `build-ask` | Build agent that executes clear tasks and relies on permissions for write actions |
 | `general-readonly` | General-style parallel subagent that researches with read-only tools and a narrow shell inspection allowlist (for delegation from read-only primaries). |
 | `grill` | Read-only planning stress-test agent for light or full one-question-at-a-time grilling |
@@ -149,13 +148,13 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|---|---|---|
 | `/all-lit-skills` | Apply all Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `lit-rendering` skill |
 | `/all-ts-skills` | Apply all TypeScript-specific skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
-| `/bro` | Restate the previous response plainly and concisely | ask |  |  |
+| `/bro` | Restate the previous response plainly and concisely | default |  |  |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
 | `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`effect` skill,`effect-principles` skill |  |
 | `/commit-push` | Split current changes into coherent commits, then push each repository series once | default | `git-commit` skill |  |
 | `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
-| `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | ask |  |  |
-| `/explore-codebase` | Explore a codebase topic with the task explore subagent | ask |  |  |
+| `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | default |  |  |
+| `/explore-codebase` | Explore a codebase topic with the task explore subagent | default |  |  |
 | `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a proposed change with light or full one-question-at-a-time grilling | grill | `grill-questions` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default | `notes-mcp` skill |  |
@@ -169,7 +168,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | plan |  |  |
 | `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
 | `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
-| `/investigate` | Investigate a topic, issue, or area without editing by default | ask |  | `diagnose` skill |
+| `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `diagnose` skill |
 | `/note-append` | Append new notes to an existing note file for the current repository | default | `notes-mcp` skill |  |
 | `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default | `notes-mcp` skill |  |
 | `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default |  |  |
