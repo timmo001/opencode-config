@@ -211,6 +211,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `subagent-chrome-devtools-guard` | Blocks Chrome DevTools tools from delegated subagent sessions |
 | `tui-dot-git-diff` | Registers a TUI keybinding (ctrl+shift+g) to open `dot git-diff` |
 | `tui-lazygit` | Registers a TUI keybinding to open lazygit |
+| `workflow-manifest` | Resolves pushed GitHub Actions runs into a compact watcher manifest |
 
 ## Publishing
 
