@@ -110,6 +110,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Skill | Origin | Local Changes | Requires | Works with |
 |---|---|---|---|---|
+| `agentic-workflows` | [github/gh-aw](https://github.com/github/gh-aw/tree/main/.github/skills/agentic-workflows) | Yes |  |  |
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grill-questions` skill |
 | `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
 | `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | No |  | `handoff` skill |
