@@ -120,6 +120,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) | Yes |  |  |
 | `effect-service-design` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/effect-service-design) | No |  |  |
 | `effect` | [kitlangton/skills](https://github.com/kitlangton/skills/tree/main/skills/effect) | No |  |  |
+| `gh-stack` | [github/gh-stack](https://github.com/github/gh-stack/tree/main/skills/gh-stack) | Yes | `git-commit` skill,`git-context` skill |  |
 | `grill-questions` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  | `ask-questions-if-underspecified` skill |
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
 | `hunk-review` | [modem-dev/hunk](https://github.com/modem-dev/hunk/tree/main/skills/hunk-review) | No |  |  |
