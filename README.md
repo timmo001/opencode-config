@@ -144,6 +144,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `researcher-readonly` | Primary-source research subagent that compares claim-specific evidence and cannot delegate further |
 | `researcher` | Interactive primary-source research agent that compares claim-specific evidence and may delegate one layer of read-only legwork |
 | `reviewer` | Reviews code for quality, bugs, security, and best practices |
+| `workflow-watcher` | Watches host-resolved GitHub Actions targets and optionally fixes an explicitly scoped quick-check failure without rediscovering workflows |
 
 ## Commands
 
