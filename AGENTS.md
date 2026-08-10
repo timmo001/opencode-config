@@ -8,9 +8,9 @@ This repo is generated from the OpenCode configuration in [`timmo001/dotfiles`](
 
 OpenCode config source: [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode)
 
-Shared skills source: [`agents/.agents/skills/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.agents/skills)
+Shared skills source: [`timmo001/skills`](https://github.com/timmo001/skills)
 
-Do not edit files here directly. Make changes in the [source dotfiles repo](https://github.com/timmo001/dotfiles) and push — a GitHub Actions workflow publishes automatically.
+Do not edit generated files here directly. Make OpenCode config changes in [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles) and skill changes in [`timmo001/skills`](https://github.com/timmo001/skills).
 
 ## Structure
 
@@ -33,7 +33,7 @@ Imported skills include `# origin:` and `# upstream-sha:` comments in their fron
 To import a skill into your own OpenCode setup, use the `import-external-skill` workflow with a GitHub tree URL pointing at the skill directory:
 
 ```
-https://github.com/timmo001/opencode-config/tree/main/skills/<skill-name>
+https://github.com/timmo001/skills/tree/main/<skill-name>
 ```
 
 Agents, commands, and plugins can be copied directly into your OpenCode config directory.

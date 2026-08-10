@@ -2,7 +2,7 @@
 
 Shared [OpenCode](https://opencode.ai) skills, agents, plugins, and commands.
 
-Generated and published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles) — OpenCode config at [`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode) and shared skills at [`agents/.agents/skills/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.agents/skills).
+Generated and published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles), with shared skills sourced from [`timmo001/skills`](https://github.com/timmo001/skills).
 
 See the [OpenCode & Agents docs](https://dotfiles.timmo.dev/opencode/) for the overview, MCP notes, and generated reference pages.
 
@@ -35,7 +35,7 @@ Some skills and commands depend on plugins to function. Check the tables below f
 Once you have the `import-external-skill` skill installed, you can use it to import skills from this or any public GitHub skills repo. Point it at a skill directory URL and it handles fetching, frontmatter conversion, and origin tracking:
 
 ```
-# origin: https://github.com/timmo001/opencode-config/tree/main/skills/<skill-name>
+# origin: https://github.com/timmo001/skills/tree/main/<skill-name>
 ```
 
 It also supports a review mode: give it a repo URL and it will list all available skills, compare them against your local library, and recommend which to import, adapt, or skip.
@@ -74,7 +74,7 @@ The config is built around a few patterns:
 |---|---|---|---|
 | `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. | `branch-context` plugin |  |
 | `changeset-scope` | Keep all scoped code work contained to the user-defined changeset. Use for implementation, fixes, diagnosis, refactoring, cleanup, and review when explicit instructions, named files, diffs, branches, pull requests, or injected work scopes define the boundary. | `branch-context` plugin | `branch-context-consumer` skill |
-| `check-skill-updates` | Check imported skills for upstream changes and apply updates. Use when reviewing whether externally imported skills have new upstream content, or when `dot skill-updates` reports available changes. |  | `import-external-skill` skill |
+| `check-skill-updates` | Check imported skills for upstream changes and review safe updates. Use when a tracked `# origin:` may have changed or when refreshing installed skills from their source repositories. |  | `import-external-skill` skill |
 | `chill` | Stop overengineering and reinventing the wheel. Use ONLY when the user explicitly invokes /chill or asks to simplify an approach that has become unnecessarily complex. | `changeset-scope` skill,`evidence-first` skill |  |
 | `cleanup-unnecessary-variables` | Safe removal of unnecessary variables during code review and refactoring. Use when simplifying code, inlining temporary or single-use variables, or removing redundant aliases, while preserving runtime behaviour, evaluation order, and variables kept for readability or debugging. |  |  |
 | `code-review` | Review code changes along two axes - Standards (does it follow the repo's conventions, plus a Fowler code-smell baseline?) and Spec (does it implement what the originating issue or spec asked for?). Use when reviewing a pull request, a branch, work-in-progress changes, or a diff. | `changeset-scope` skill,`effect` skill,`effect-principles` skill,`workflows-watch` skill |  |
@@ -89,7 +89,7 @@ The config is built around a few patterns:
 | `home-assistant-list-components` | Home Assistant list component migration and usage guidance. Use when editing ha-list, ha-list-item, ha-md-list, or migrating to ha-list-nav, ha-list-selectable, ha-list-item-button, ha-list-item-option, or ha-list-item-base. |  |  |
 | `home-assistant-lit-rendering` | Home Assistant Lit rendering extensions for HA components and context-aware picker callback shape. |  | `lit-rendering` skill |
 | `human-step-guide` | Prepare a concise guide when progress is blocked by a genuinely human-only action. Use for approvals, physical actions, credential entry, or dashboard steps the agent cannot perform; do not use for work available tools can complete. |  |  |
-| `import-external-skill` | Import skills from external repos into the local dotfiles skill library. Use when pulling in a skill from a public repo, reviewing an external skill set for useful additions, or adapting external skill content into existing local skills. |  |  |
+| `import-external-skill` | Import skills from external repositories into this Agent Skills repository. Use when pulling in a public skill, reviewing an external skill set, or adapting upstream content into an existing skill. |  |  |
 | `install-tool` | Install tools, applications, CLIs, runtimes, and packages. Use when an installation request should prefer mise for development tools, then fall back to pacman or yay for system-integrated software. | `pkexec-root` skill |  |
 | `lit-rendering` | Lit rendering and picker callback-shape guidance for editing and reviewing Lit components. |  |  |
 | `maintain-docs` | Keep documentation current and accurate with recent code changes, across in-code docs (docstrings, annotations, comments), in-repo docs sites, and external docs repositories. Use when asked to update docs, check docs accuracy, keep documentation current, document recent changes, refresh docstrings or annotations, or catch documentation up with the codebase. Matches the codebase's existing documentation density and stops before commit. |  |  |
@@ -220,5 +220,5 @@ These skills were imported from other repos. Some are used as-is; others have be
 ## Publishing
 
 This repo is published automatically via GitHub Actions when the OpenCode config
-[`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode) or shared skills
-[`agents/.agents/skills/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.agents/skills) change.
+[`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy/agents/.config/opencode) or the pinned
+[`timmo001/skills`](https://github.com/timmo001/skills) revision changes.
