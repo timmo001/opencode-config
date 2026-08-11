@@ -77,13 +77,13 @@ The config is built around a few patterns:
 | `check-skill-updates` | Check imported skills for upstream changes and review safe updates. Use when a tracked `# origin:` may have changed or when refreshing installed skills from their source repositories. |  | `import-external-skill` skill |
 | `chill` | Stop overengineering and reinventing the wheel. Use ONLY when the user explicitly invokes /chill or asks to simplify an approach that has become unnecessarily complex. | `changeset-scope` skill,`evidence-first` skill |  |
 | `cleanup-unnecessary-variables` | Safe removal of unnecessary variables during code review and refactoring. Use when simplifying code, inlining temporary or single-use variables, or removing redundant aliases, while preserving runtime behaviour, evaluation order, and variables kept for readability or debugging. |  |  |
-| `code-review` | Review code changes along two axes - Standards (does it follow the repo's conventions, plus a Fowler code-smell baseline?) and Spec (does it implement what the originating issue or spec asked for?). Use when reviewing a pull request, a branch, work-in-progress changes, or a diff. | `changeset-scope` skill,`effect` skill,`effect-principles` skill,`workflows-watch` skill |  |
-| `dotfiles-stow` | REQUIRED when changing configs managed by ~/.config/dotfiles or ~/.config/dotfiles-private. Enforces editing stow source paths (not ad-hoc live paths) and using the dot command for stow/update/validation workflows. |  |  |
+| `code-review` | Review code changes along two axes - Standards (does it follow the repo's conventions, plus a Fowler code-smell baseline?) and Spec (does it implement what the originating issue or spec asked for?). Use when reviewing a pull request, a branch, work-in-progress changes, or a diff. | `changeset-scope` skill,`effect-principles` skill,`workflows-watch` skill |  |
 | `effect-principles` | Apply the Effect way of reasoning in codebases that do not use Effect, in any programming language. Use when editing or reviewing non-Effect code so dependencies, failures, state, boundaries, resources, time, and workflows stay explicit without adding Effect-shaped architecture or broader scope. |  | `changeset-scope` skill |
 | `evidence-first` | Check questions and uncertain statements before answering, while following clear user choices and limits. Use in any agent mode when the user asks why or how something works, says things like I think, I remember, or I don't think, asks whether something is correct, requests advice, or gives a firm preference such as I don't want this, reduce the scope, or this is going too far. | `research` skill |  |
-| `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit, /commit-push, or /commit-push-watch. Never infer authorisation for later changes; never run raw git commit. | `workflows-watch` skill |  |
-| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin,`git-commit` skill,`workflows-watch` skill |  |
+| `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit, /commit-push, or /commit-push-watch. Never infer authorisation for later changes; never run raw git commit. | `workflows-watch` skill | `upstream` skill |
+| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin,`git-commit` skill,`workflows-watch` skill | `upstream` skill |
 | `handoff` | Compact the current conversation into a handoff document for another agent to pick up. |  |  |
+| `herdr-workflows` | Apply local safeguards for Herdr session recovery and transferring linked-worktree changes back to a host checkout. Use alongside the herdr skill when diagnosing Herdr socket routing, recovering the default session, or moving, consolidating, or continuing Herdr worktree changes from the main or host checkout. The herdr skill remains authoritative for all Herdr CLI, topology, targeting, lifecycle, and safety behaviour. |  |  |
 | `home-assistant-frontend` | Home Assistant frontend skill routing and personal engineering overlays. Use when editing or reviewing the Home Assistant frontend so repository-local `ha-frontend-*` skills stay authoritative and applicable Lit, TypeScript, cleanup, and HA companion skills are also loaded. | `home-assistant-lit-rendering` skill,`lit-rendering` skill |  |
 | `home-assistant-lazy-context` | Home Assistant frontend lazy-context, memoization, and `hass` removal guidance. Use when migrating Lit components from `hass!: HomeAssistant`, `.hass=${...}`, or broad `hass` access to context slices. |  |  |
 | `home-assistant-list-components` | Home Assistant list component migration and usage guidance. Use when editing ha-list, ha-list-item, ha-md-list, or migrating to ha-list-nav, ha-list-selectable, ha-list-item-button, ha-list-item-option, or ha-list-item-base. |  |  |
@@ -100,10 +100,10 @@ The config is built around a few patterns:
 | `research` | Investigate a topic against primary sources and return cited findings, comparing credible maintainer and contributor perspectives when judgement is involved. Use when the user asks why, says show evidence, validate this, or use trusted sources; wants research, docs, API, or spec facts; needs external library or GitHub behaviour verified; compares competing views; or delegates reading legwork to a background agent. |  |  |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `shared-workflows` | Use, configure, maintain, or create reusable GitHub Actions workflows for personal and organisation repositories. Use when a task mentions shared workflows, reusable workflows, `workflow_call`, cross-repository workflow `uses:`, or the personal workflows repository; do not use for repository-specific or proof-of-concept CI unless evaluating whether it should be shared. |  |  |
-| `staged-implementation` | Execute broad changes one coherent, independently verifiable stage at a time. Use when work spans multiple independently reviewable changes, or when contracts, producer-consumer migrations, generated artefacts, or release packaging create an ordered multi-stage rollout; skip small single-purpose changes. |  | `handoff` skill,`notes-mcp` skill |
+| `staged-implementation` | Execute broad changes one coherent, independently verifiable stage at a time. Use when work spans multiple independently reviewable changes, or when contracts, producer-consumer migrations, generated artefacts, or release packaging create an ordered multi-stage rollout; skip small single-purpose changes. |  | `handoff` skill |
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  |  |
 | `workflows-watch` | Watch GitHub Actions workflows in an experimental background task and return the result. Use when asked to watch checks, wait for workflows, or follow workflow runs without blocking the main agent; diagnose and fix only when the caller explicitly requests fix mode. | `changeset-scope` skill,`diagnose` skill | `git-commit` skill |
-| `writing-dot-skills` | Craft for authoring skills that select reliably and stay lean - writing the description for correct auto-selection, matching instruction freedom to task fragility, deciding when to split into references or add scripts, and running quality and anti-pattern checks. Use when creating or revising a skill's content or structure. For the file schema, frontmatter fields, and placement, use customize-opencode. |  |  |
+| `writing-dot-skills` | Craft for authoring Agent Skills that select reliably and stay lean. Use when creating or revising a skill's description, workflow, references, scripts, or structure. |  |  |
 | `writing-style` | Write commit messages, PR and issue text, docs (README), code comments, and user-facing strings (notifications, UI labels, toasts, error messages) in the project owner's voice: concise, human, UK English, no em-dashes, no robotic or marketing tone. Use when authoring or editing any of these. Defer to a repo's established house style when it has one; otherwise this sets the default voice. |  |  |
 
 ### From External Sources
@@ -115,25 +115,15 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `agentic-workflows` | [github/gh-aw](https://github.com/github/gh-aw/tree/main/.github/skills/agentic-workflows) | Yes |  |  |
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grilling` skill |
 | `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
-| `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | No |  | `handoff` skill |
+| `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | Yes |  | `handoff` skill |
 | `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | Yes |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
-| `ctx-agent-history-search` | [ctxrs/ctx](https://github.com/ctxrs/ctx/tree/main/skills/ctx-agent-history-search) | No |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  |  |
 | `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) | Yes |  |  |
-| `effect-service-design` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/effect-service-design) | No |  |  |
-| `effect` | [kitlangton/skills](https://github.com/kitlangton/skills/tree/main/skills/effect) | No |  |  |
 | `gh-stack` | [github/gh-stack](https://github.com/github/gh-stack/tree/main/skills/gh-stack) | Yes | `git-commit` skill,`git-context` skill |  |
 | `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  |  |
-| `herdr` | [herdrdev/herdr](https://github.com/herdrdev/herdr/tree/master/skills/herdr) | No |  |  |
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
-| `hunk-review` | [modem-dev/hunk](https://github.com/modem-dev/hunk/tree/main/skills/hunk-review) | No |  |  |
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grilling` skill |
-| `motion-choreography-patterns` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/motion-choreography-patterns) | No |  |  |
-| `notes-mcp` | [timmo001/notes](https://github.com/timmo001/notes/tree/main/.agents/skills/notes-mcp) | No |  |  |
-| `opentui` | [anomalyco/opentui](https://github.com/anomalyco/opentui/tree/main/packages/web/src/content) | No |  |  |
-| `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | No |  |  |
-| `terminal-control` | [anomalyco/terminal-control](https://github.com/anomalyco/terminal-control/tree/v0.4.1/skills/terminal-control) | No |  |  |
 | `to-questionnaire` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/to-questionnaire) | Yes |  |  |
 
 ## Agents
@@ -157,7 +147,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/all-ts-skills` | Apply all TypeScript-specific skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
 | `/bro` | Re-pitch the previous response plainly, concisely, and with enough context | default |  |  |
 | `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
-| `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`effect` skill,`effect-principles` skill |  |
+| `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`effect-principles` skill |  |
 | `/commit-push-watch` | Split current changes into coherent commits, push, then watch workflows | default | `git-commit` skill,`workflows-watch` skill |  |
 | `/commit-push` | Split current changes into coherent commits and push without workflow watchers | default | `git-commit` skill,`workflows-watch` skill |  |
 | `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
@@ -165,7 +155,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | default |  |  |
 | `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a plan, decision, or idea with light or full question rounds | grill | `grilling` skill |  |
-| `/handoff` | Write a handoff document for the next agent session | default | `notes-mcp` skill |  |
+| `/handoff` | Write a handoff document for the next agent session | default |  |  |
 | `/handoffs-list` | List handoff notes for the current repository | default |  | `handoff` skill |
 | `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `home-assistant-frontend` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill |
 | `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill | `home-assistant-lit-rendering` skill,`lit-rendering` skill |
@@ -177,8 +167,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
 | `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `diagnose` skill |
-| `/note-append` | Append new notes to an existing note file for the current repository | default | `notes-mcp` skill |  |
-| `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default | `notes-mcp` skill |  |
+| `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
+| `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default |  |  |
 | `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default |  |  |
 | `/notes-list` | List notes for the current repository, optionally filtered by tag | default |  |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
@@ -192,7 +182,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`remove-single-use-functions` skill |  |
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
-| `/session-reference` | Load another OpenCode session into this conversation by its sidebar title | default | `ctx-agent-history-search` skill |  |
+| `/session-reference` | Load another OpenCode session into this conversation by its sidebar title | default |  |  |
 | `/update-docs` | Keep documentation current with recent code changes, via Context MCP and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
