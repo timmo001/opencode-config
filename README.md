@@ -115,7 +115,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Skill | Origin | Local Changes | Requires | Works with |
 |---|---|---|---|---|
-| `add-oxlint-rule` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/add-oxlint-rule) | No |  |  |
+| `add-oxlint-rule` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/add-oxlint-rule) | No | `release-oxlint-rules` skill |  |
 | `agentic-workflows` | [github/gh-aw](https://github.com/github/gh-aw/tree/main/.github/skills/agentic-workflows) | Yes |  |  |
 | `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grilling` skill |
 | `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
@@ -130,6 +130,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grilling` skill |
 | `install-timmo-oxlint-rules` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/install-timmo-oxlint-rules) | No |  |  |
 | `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | Yes |  |  |
+| `release-oxlint-rules` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/release-oxlint-rules) | No |  |  |
 | `show-me` | [dmmulroy/.dotfiles](https://github.com/dmmulroy/.dotfiles/tree/main/home/.agents/skills/show-me) | Yes |  |  |
 | `to-questionnaire` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/to-questionnaire) | Yes |  |  |
 
