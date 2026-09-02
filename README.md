@@ -72,6 +72,7 @@ The config is built around a few patterns:
 
 | Skill | Description | Requires | Works with |
 |---|---|---|---|
+| `agent-oxlint` | Run the optional advisory Oxlint pass during JavaScript or TypeScript cleanup and slop-reduction work in dot-managed repositories. Use after the repository's own lint workflow; act only on diagnostics intersecting changed diff lines, while the command checks private opt-in and local Oxlint precedence. |  | `install-timmo-oxlint-rules` skill |
 | `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. | `branch-context` plugin |  |
 | `changeset-scope` | Keep all scoped code work contained to the user-defined changeset. Use for implementation, fixes, diagnosis, refactoring, cleanup, and review when explicit instructions, named files, diffs, branches, pull requests, or injected work scopes define the boundary. | `branch-context` plugin | `branch-context-consumer` skill |
 | `check-skill-updates` | Check imported skills for upstream changes and review safe updates. Use when a tracked `# origin:` may have changed or when refreshing installed skills from their source repositories. |  | `import-external-skill` skill |
