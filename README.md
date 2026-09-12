@@ -195,7 +195,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/session-reference` | Load another OpenCode session into this conversation by its sidebar title | default |  |  |
-| `/update-docs` | Keep documentation current with recent code changes, via Context MCP and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
+| `/update-docs` | Keep documentation current with recent code changes, via the Context CLI and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
 
@@ -208,7 +208,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
 | `generated-artifact-guard` | Blocks direct mutation of generated dotfiles artefacts |
 | `mcp-repo-gate` | Per-repo MCP server gating for OpenCode |
-| `notes-guard` | Blocks direct file and shell access to the repository notes vault |
+| `notes-guard` | Blocks direct file access to the repository notes vault |
 | `notification` | Sends contextual desktop notifications and terminal attention for agent events |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
 | `readonly-subagent-shell-guard` | Rejects shell syntax that can turn read-only subagent commands into writes |
