@@ -82,11 +82,11 @@ The config is built around a few patterns:
 | `code-review` | Review code changes along two axes - Standards (does it follow the repo's conventions, plus a Fowler code-smell baseline?) and Spec (does it implement what the originating issue or spec asked for?). Use when reviewing a pull request, a branch, work-in-progress changes, or a diff. | `changeset-scope` skill,`effect-principles` skill |  |
 | `effect-principles` | Apply the Effect way of reasoning in codebases that do not use Effect, in any programming language. Use when editing or reviewing non-Effect code so dependencies, failures, state, boundaries, resources, time, and workflows stay explicit without adding Effect-shaped architecture or broader scope. |  | `changeset-scope` skill |
 | `evidence-first` | Check questions and uncertain statements before answering, while following clear user choices and limits. Use in any agent mode when the user asks why or how something works, says things like I think, I remember, or I don't think, asks whether something is correct, requests advice, or gives a firm preference such as I don't want this, reduce the scope, or this is going too far. | `research` skill |  |
-| `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer authorisation for later changes; never run raw git commit. |  | `upstream` skill |
-| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin,`git-commit` skill | `upstream` skill |
+| `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer authorisation for later changes; never run raw git commit. |  | `context-cli` skill,`upstream` skill |
+| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin,`context-cli` skill,`git-commit` skill | `upstream` skill |
 | `github-development-rulesets` | Create GitHub Development rulesets from the bundled JSON baseline, compare and migrate existing rulesets, or update required CI checks. Use when setting up a Development ruleset, choosing among existing rulesets, or reconciling their policy and emitted check names. |  |  |
 | `github-repository-setup` | Create GitHub repositories with the preferred feature and squash-merge settings, offer CI and automerge workflows, and finish first-push setup with a Development ruleset. Use when creating a GitHub repository, using gh repo create, applying repository defaults, or completing a new repository's initial GitHub setup. |  | `github-development-rulesets` skill,`shared-workflows` skill |
-| `handoff` | Compact the current conversation into a handoff document for another agent to pick up. |  |  |
+| `handoff` | Compact the current conversation into a handoff document for another agent to pick up. | `notes-cli` skill |  |
 | `herdr-sdk` | Use dmmulroy/herdr-ts-sdk (@herdr/sdk) for Effect TypeScript integrations with Herdr. Use when adding, migrating, debugging, or reviewing SDK consumers; read current upstream docs and installed contracts before coding. For terminal or workspace control, use the herdr skill. |  |  |
 | `herdr-workflows` | Apply local safeguards for Herdr session recovery and transferring linked-worktree changes back to a host checkout. Use alongside the herdr skill when diagnosing Herdr socket routing, recovering the default session, or moving, consolidating, or continuing Herdr worktree changes from the main or host checkout. The herdr skill remains authoritative for all Herdr CLI, topology, targeting, lifecycle, and safety behaviour. |  |  |
 | `home-assistant-frontend` | Home Assistant frontend skill routing and personal engineering overlays. Use when editing or reviewing the Home Assistant frontend so repository-local `ha-frontend-*` skills stay authoritative and applicable Lit, TypeScript, cleanup, and HA companion skills are also loaded. | `home-assistant-lit-rendering` skill,`lit-rendering` skill |  |
@@ -107,7 +107,7 @@ The config is built around a few patterns:
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `session-coordination` | Coordinate delegated agent sessions with bounded assignments, asynchronous background scheduling, soft concurrency caps, context-window rotation, independent review cycles, and logged cleanup across native child sessions and Herdr-managed agents. Use when managing multiple agents, panes, tabs, branches, stages, or long-running tasks while keeping the coordinating session small. | `changeset-scope` skill,`code-review` skill,`gh-stack` skill,`git-commit` skill,`git-context` skill,`herdr-workflows` skill,`staged-implementation` skill |  |
 | `shared-workflows` | Use, configure, maintain, or create reusable GitHub Actions workflows for personal and organisation repositories. Use when a task mentions shared workflows, reusable workflows, `workflow_call`, cross-repository workflow `uses:`, or the personal workflows repository; do not use for repository-specific or proof-of-concept CI unless evaluating whether it should be shared. |  |  |
-| `staged-implementation` | Execute broad changes one coherent, independently verifiable stage at a time. Use when work spans multiple independently reviewable changes, or when contracts, producer-consumer migrations, generated artefacts, or release packaging create an ordered multi-stage rollout; skip small single-purpose changes. |  | `handoff` skill |
+| `staged-implementation` | Execute broad changes one coherent, independently verifiable stage at a time. Use when work spans multiple independently reviewable changes, or when contracts, producer-consumer migrations, generated artefacts, or release packaging create an ordered multi-stage rollout; skip small single-purpose changes. |  | `handoff` skill,`notes-cli` skill |
 | `task-focus` | Keep the original task on track when the user raises a side thought, side question, tentative branch idea, or explicit change of task. Use before diverting work, switching branches, or choosing between a BTW session, a fresh session, and the current conversation, especially with a large context window. |  |  |
 | `types-enforce-ts` | TypeScript type-safety guidance for editing and reviewing `.ts`, `.tsx`, `.mts`, and `.cts` files. |  |  |
 | `writing-dot-skills` | Craft for authoring Agent Skills that select reliably and stay lean. Use when creating or revising a skill's description, workflow, references, scripts, or structure. |  |  |
@@ -125,6 +125,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
 | `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | Yes |  | `handoff` skill |
 | `codebase-design` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/codebase-design) | Yes |  |  |
+| `context-cli` | [timmo001/context](https://github.com/timmo001/context/tree/main/.agents/skills/context-cli) | No |  |  |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  |  |
 | `domain-modeling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/domain-modeling) | Yes |  |  |
@@ -134,6 +135,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `html` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/html) | Yes |  |  |
 | `improve-codebase-architecture` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/improve-codebase-architecture) | Yes |  | `grilling` skill |
 | `install-timmo-oxlint-rules` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/install-timmo-oxlint-rules) | No |  |  |
+| `notes-cli` | [timmo001/notes](https://github.com/timmo001/notes/tree/main/.agents/skills/notes-cli) | No |  |  |
 | `prototype` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/prototype) | Yes |  |  |
 | `release-oxlint-rules` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/release-oxlint-rules) | Yes |  |  |
 | `show-me` | [dmmulroy/.dotfiles](https://github.com/dmmulroy/.dotfiles/tree/main/home/.agents/skills/show-me) | Yes |  |  |
@@ -165,9 +167,9 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | default |  |  |
 | `/explore-codebase` | Explore a codebase topic with the task explore subagent | default |  |  |
-| `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `diagnose` skill,`shared-workflows` skill |  |
+| `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `context-cli` skill,`diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a plan, decision, or idea with light or full question rounds | grill | `grilling` skill |  |
-| `/handoff` | Write a handoff document for the next agent session | default |  |  |
+| `/handoff` | Write a handoff document for the next agent session | default | `notes-cli` skill |  |
 | `/handoffs-list` | List handoff notes for the current repository | default |  | `handoff` skill |
 | `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `home-assistant-frontend` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill |
 | `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill | `home-assistant-lit-rendering` skill,`lit-rendering` skill |
@@ -179,9 +181,9 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
 | `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
 | `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `diagnose` skill |
-| `/note-append` | Append new notes to an existing note file for the current repository | default |  |  |
-| `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default |  |  |
-| `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default |  |  |
+| `/note-append` | Append new notes to an existing note file for the current repository | default | `notes-cli` skill |  |
+| `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default | `notes-cli` skill |  |
+| `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default | `notes-cli` skill |  |
 | `/notes-list` | List notes for the current repository, optionally filtered by tag | default |  |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default |  |  |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
@@ -195,7 +197,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/session-reference` | Load another OpenCode session into this conversation by its sidebar title | default |  |  |
-| `/update-docs` | Keep documentation current with recent code changes, via the Context CLI and delegated investigation | default | `maintain-docs` skill,`writing-style` skill |  |
+| `/update-docs` | Keep documentation current with recent code changes, via the Context CLI and delegated investigation | default | `context-cli` skill,`maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
 
