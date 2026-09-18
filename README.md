@@ -151,7 +151,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `grill` | Read-only planning stress-test agent for light or full round-based grilling |
 | `refactorer` | Refactor code while preserving behavior and following local command and skill workflows |
 | `researcher-readonly` | Primary-source research subagent that compares claim-specific evidence and cannot delegate further |
-| `researcher` | Interactive primary-source research agent that compares claim-specific evidence and may delegate one layer of read-only legwork |
+| `researcher` | Interactive primary-source research agent that compares claim-specific evidence |
 | `reviewer` | Reviews code for quality, bugs, security, and best practices |
 
 ## Commands
@@ -166,7 +166,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/commit-push` | Split current changes into coherent commits and push | default | `git-commit` skill |  |
 | `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
 | `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | default |  |  |
-| `/explore-codebase` | Explore a codebase topic with the task explore subagent | default |  |  |
+| `/explore-codebase` | Explore a codebase topic and summarise the relevant code | default |  |  |
 | `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `context-cli` skill,`diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a plan, decision, or idea with light or full question rounds | grill | `grilling` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default | `notes-cli` skill |  |
@@ -177,10 +177,9 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/home-assistant/lit-rendering` | Review and fix Home Assistant Lit rendering and picker callback-shape patterns in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lit-rendering` skill |  |
 | `/home-assistant/replace-spacing` | Replace hardcoded spacing values with ha-space tokens from core.globals.ts | default |  |  |
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
-| `/improve-codebase-architecture` | Review a codebase area for architectural friction and focused structural improvements | plan |  |  |
 | `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
 | `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
-| `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `diagnose` skill |
+| `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `diagnose` skill,`research` skill |
 | `/note-append` | Append new notes to an existing note file for the current repository | default | `notes-cli` skill |  |
 | `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default | `notes-cli` skill |  |
 | `/note-reference` | Load one or more notes, relevant skills, and next steps for the current repository | default | `notes-cli` skill |  |
@@ -197,7 +196,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
 | `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
 | `/session-reference` | Load another OpenCode session into this conversation by its sidebar title | default |  |  |
-| `/update-docs` | Keep documentation current with recent code changes, via the Context CLI and delegated investigation | default | `context-cli` skill,`maintain-docs` skill,`writing-style` skill |  |
+| `/update-docs` | Keep documentation current with recent code changes, using the Context CLI | default | `context-cli` skill,`maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
 
