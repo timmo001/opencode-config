@@ -154,20 +154,20 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Command | Description | Agent | Requires | Works with |
 |---|---|---|---|---|
-| `/all-lit-skills` | Apply all Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `lit-rendering` skill |
-| `/all-ts-skills` | Apply all TypeScript-specific skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `cleanup-unnecessary-variables` skill,`remove-single-use-functions` skill,`types-enforce-ts` skill |
+| `/all-lit-skills` | Apply relevant Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`lit-rendering` skill |  |
+| `/all-ts-skills` | Apply relevant TypeScript and cleanup skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`types-enforce-ts` skill |  |
 | `/bro` | Re-pitch the previous response plainly, concisely, and with enough context | default |  |  |
-| `/check-skill-updates` | Check imported skills for upstream updates | default |  | `import-external-skill` skill |
+| `/check-skill-updates` | Check imported skills for upstream updates | default |  |  |
 | `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`effect-principles` skill |  |
 | `/commit-push` | Split current changes into coherent commits and push | default | `git-commit` skill |  |
 | `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
-| `/debug-frontend` | Debug browser-specific UI issues with Chrome DevTools tools first | default |  |  |
+| `/debug-frontend` | Investigate browser-specific UI problems with targeted browser evidence | default | `browser-access` skill |  |
 | `/explore-codebase` | Explore a codebase topic and summarise the relevant code | default |  |  |
 | `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `context-cli` skill,`diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a plan, decision, or idea with light or full question rounds | grill | `grilling` skill |  |
 | `/handoff` | Write a handoff document for the next agent session | default | `notes-cli` skill |  |
 | `/handoffs-list` | List handoff notes for the current repository | default | `notes-cli` skill | `handoff` skill |
-| `/home-assistant/all-frontend-skills` | Apply all Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill | `home-assistant-frontend` skill,`home-assistant-lit-rendering` skill,`lit-rendering` skill |
+| `/home-assistant/all-frontend-skills` | Apply relevant Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`home-assistant-frontend` skill |  |
 | `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill | `home-assistant-lit-rendering` skill,`lit-rendering` skill |
 | `/home-assistant/list-components` | Migrate Home Assistant list components from MWC to new primitives in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-list-components` skill,`lit-rendering` skill |  |
 | `/home-assistant/lit-rendering` | Review and fix Home Assistant Lit rendering and picker callback-shape patterns in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lit-rendering` skill |  |
@@ -175,7 +175,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
 | `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
 | `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
-| `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `diagnose` skill,`research` skill |
+| `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `browser-access` skill,`diagnose` skill,`research` skill |
 | `/note-append` | Append new notes to an existing note file for the current repository | default | `notes-cli` skill |  |
 | `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default | `notes-cli` skill |  |
 | `/note-reference` | Load repository notes and identify the next step | default | `notes-cli` skill | `handoff` skill |
@@ -190,7 +190,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/refactor-enforce-types` | Refactor - enforce TypeScript type safety in current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`types-enforce-ts` skill |  |
 | `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`remove-single-use-functions` skill |  |
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
-| `/reset-branch-reapply` | Reset branch to default and reapply current diff staged | build | `branch-context` plugin,`branch-context-consumer` skill |  |
+| `/reset-branch-reapply` | Reset a clean feature branch to its base and reapply its committed changes staged | build | `branch-context` plugin,`branch-context-consumer` skill,`git-context` skill |  |
 | `/session-reference` | Load another OpenCode session into this conversation by its sidebar title | default |  |  |
 | `/update-docs` | Keep documentation current with recent code changes, using the Context CLI | default | `context-cli` skill,`maintain-docs` skill,`writing-style` skill |  |
 
