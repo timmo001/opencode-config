@@ -181,6 +181,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `/note-reference` | Load repository notes and identify the next step | default | `notes-cli` skill | `handoff` skill |
 | `/notes-list` | List notes for the current repository, optionally filtered by tag | default | `notes-cli` skill |  |
 | `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default | `notes-cli` skill |  |
+| `/open-in-agent` | Open a local repository in an agent using its shared Herdr workspace | default |  | `session-coordination` skill |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
 | `/plannotator-annotate` | Open interactive annotation UI for a file, folder, or URL | default |  |  |
 | `/plannotator-last` | Annotate the last assistant message | default |  |  |
