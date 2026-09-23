@@ -1,0 +1,38 @@
+import { Service } from "@opencode/client/effect/service";
+import { Effect, FileSystem, PlatformError } from "effect";
+import {
+  FetchHttpClient,
+  HttpClient,
+  type HttpClientRequest,
+} from "effect/unstable/http";
+import { readFile } from "node:fs/promises";
+
+const serviceFileSystem = FileSystem.makeNoop({
+  readFileString: (path) =>
+    Effect.tryPromise({
+      try: () => readFile(path, "utf8"),
+      catch: (cause) =>
+        PlatformError.systemError({
+          // oxlint-disable-next-line anti-slop-effect/no-manual-tagged-construction -- systemError requires a reason tag in its constructor options.
+          _tag: "Unknown",
+          module: "FileSystem",
+          method: "readFileString",
+          pathOrDescriptor: path,
+          cause,
+        }),
+    }),
+});
+
+export const discoverService = () =>
+  Service.discover().pipe(
+    Effect.provideService(FileSystem.FileSystem, serviceFileSystem),
+  );
+
+export const executeHttp = (request: HttpClientRequest.HttpClientRequest) =>
+  Effect.gen(function* () {
+    const client = yield* HttpClient.HttpClient;
+
+    return yield* client.execute(request);
+  }).pipe(
+    Effect.provide(FetchHttpClient.layer),
+  );

@@ -1,6 +1,6 @@
 # OpenCode Config
 
-Shared [OpenCode](https://opencode.ai) skills, agents, plugins, and commands.
+Shared [OpenCode 2](https://opencode.ai) skills, agents, plugins, and commands. The plugins use the OpenCode 2 Effect plugin API (`@opencode/plugin`).
 
 Generated and published from [`timmo001/dotfiles`](https://github.com/timmo001/dotfiles), with shared skills sourced from [`timmo001/skills`](https://github.com/timmo001/skills).
 
@@ -17,18 +17,19 @@ cd opencode-config
 # Copy individual items
 cp -r skills/diagnose ~/.agents/skills/
 cp commands/inject-context.md ~/.config/opencode/commands/
-cp plugins/env-protection.ts ~/.config/opencode/plugins/
-cp -r lib ~/.config/opencode/
+cp -r plugins lib ~/.config/opencode/
+bun install --cwd ~/.config/opencode/plugins
 cp agents/reviewer.md ~/.config/opencode/agents/
 
 # Or copy everything
 cp -r skills ~/.agents/
 cp -r agents commands plugins lib ~/.config/opencode/
+bun install --cwd ~/.config/opencode/plugins
 ```
 
 > **Stow users:** If your OpenCode config is managed by [GNU Stow](https://www.gnu.org/software/stow/) or a similar symlink manager, the `cp` commands above will not work — they copy into the live path rather than your stow source directory. Either follow the [dotfiles setup](https://github.com/timmo001/dotfiles) this repo is published from, or ask an agent to adapt the files into your own stow structure.
 
-Some skills and commands depend on plugins to function. Check the tables below for required plugins and install them alongside the skill or command.
+Plugins share modules from `plugins/lib/` and `lib/`, and their dependencies are declared in `plugins/package.json`, so copy the whole `plugins` and `lib` directories rather than single plugin files. Some skills and commands depend on plugins to function. Check the tables below for required plugins and install them alongside the skill or command.
 
 ### Importing Skills
 
@@ -56,7 +57,7 @@ This repo provides skills, agents, commands, and plugins but not an `opencode.js
 }
 ```
 
-Place it at `~/.config/opencode/opencode.json` (or `opencode.jsonc` for comments). See the [OpenCode docs](https://opencode.ai/docs/config) for the full configuration reference.
+Place it at `~/.config/opencode/opencode.json` (or `opencode.jsonc` for comments). See the [OpenCode docs](https://opencode.ai/v2/docs/config) for the full configuration reference.
 
 ## How It Fits Together
 
@@ -208,8 +209,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `notes-guard` | Blocks direct file access to the repository notes vault |
 | `notification` | Sends contextual desktop notifications and terminal attention for agent events |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
-| `readonly-subagent-shell-guard` | Rejects shell syntax that can turn read-only subagent commands into writes |
-| `repo-notes` | Injects repo-note context into OpenCode note commands |
+| `repo-notes` | Injects repository note context into OpenCode note commands |
 | `stack-context` | Injects codebase stack-context blocks into prompts |
 | `subagent-chrome-devtools-guard` | Blocks Chrome DevTools tools from delegated subagent sessions |
 

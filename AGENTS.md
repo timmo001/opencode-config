@@ -18,7 +18,7 @@ Do not edit generated files here directly. Make OpenCode config changes in [`tim
 skills/      OpenCode skills (SKILL.md per directory, optional references/)
 agents/      Agent definitions (YAML frontmatter + Markdown body)
 commands/    Slash commands (YAML frontmatter + Markdown workflow)
-plugins/     Lifecycle plugins (ESM TypeScript)
+plugins/     OpenCode 2 plugins (Effect TypeScript, with package.json and plugins/lib/)
 lib/         Shared modules imported by plugins
 ```
 
