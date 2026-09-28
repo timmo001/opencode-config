@@ -16,7 +16,7 @@ cd opencode-config
 
 # Copy individual items
 cp -r skills/diagnose ~/.agents/skills/
-cp commands/inject-context.md ~/.config/opencode/commands/
+cp commands/code-review.md ~/.config/opencode/commands/
 cp -r plugins lib ~/.config/opencode/
 bun install --cwd ~/.config/opencode/plugins
 cp agents/reviewer.md ~/.config/opencode/agents/
@@ -63,10 +63,7 @@ Place it at `~/.config/opencode/opencode.json` (or `opencode.jsonc` for comments
 
 The config is built around a few patterns:
 
-- **Branch context injection** — The `branch-context` plugin pre-computes git and PR state once per command and injects it as structured XML. Commands that need current-branch context declare a dependency on this plugin instead of running their own `git`/`gh` calls.
 - **Graduated agent permissions** — Agents range from workspace-read-only (`reviewer`, `ask`) through ask-gated (`build-ask`) to edit-capable (`refactorer`). Read-only primary agents use native task allowlists, while terminal read-only subagents cannot delegate further.
-- **Scoped cleanup commands** — Commands like `/refactor-enforce-types`, `/refactor-cleanup-variables`, and `/refactor-remove-single-use` combine branch-context work-scope with a matching skill and route through the `refactorer` agent, keeping changes within the current git diff.
-- **Skill-based routing** — Commands are thin wrappers that name an agent, declare required skills, and state whether branch context is needed. The workflow logic lives in skills and plugins, not in the command itself.
 - **Secret protection** — The `env-protection` plugin blocks reads of `.env` files (except `.env.example`) across all agents.
 
 ## Skills
@@ -74,9 +71,9 @@ The config is built around a few patterns:
 | Skill | Description | Requires | Works with |
 |---|---|---|---|
 | `agent-oxlint` | Run the optional advisory Oxlint pass during JavaScript or TypeScript cleanup and slop-reduction work in dot-managed repositories. Use after the repository's own lint workflow; act only on diagnostics intersecting changed diff lines, while the command checks private opt-in and local Oxlint precedence. |  | `install-timmo-oxlint-rules` skill |
-| `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. | `branch-context` plugin |  |
+| `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. |  |  |
 | `browser-access` | Decide whether browser access is needed and keep authorised checks narrow. Use for frontend or UI diagnosis, before proposing or using Browser Control, Chrome DevTools, or equivalent browser automation, and when the user explicitly requests browser interaction. |  |  |
-| `changeset-scope` | Keep all scoped code work contained to the user-defined changeset. Use for implementation, fixes, diagnosis, refactoring, cleanup, and review when explicit instructions, named files, diffs, branches, pull requests, or injected work scopes define the boundary. | `branch-context` plugin | `branch-context-consumer` skill |
+| `changeset-scope` | Keep all scoped code work contained to the user-defined changeset. Use for implementation, fixes, diagnosis, refactoring, cleanup, and review when explicit instructions, named files, diffs, branches, pull requests, or injected work scopes define the boundary. |  | `branch-context-consumer` skill |
 | `check-skill-updates` | Check imported skills for upstream changes and review safe updates. Use when a tracked `# origin:` may have changed or when refreshing installed skills from their source repositories. |  | `import-external-skill` skill |
 | `chill` | Stop overengineering and reinventing the wheel. Use ONLY when the user explicitly invokes /chill or asks to simplify an approach that has become unnecessarily complex. | `changeset-scope` skill,`evidence-first` skill |  |
 | `cleanup-unnecessary-variables` | Safe removal of unnecessary variables during code review and refactoring. Use when simplifying code, inlining temporary or single-use variables, or removing redundant aliases, while preserving runtime behaviour, evaluation order, and variables kept for readability or debugging. |  |  |
@@ -84,7 +81,7 @@ The config is built around a few patterns:
 | `effect-principles` | Apply the Effect way of reasoning in codebases that do not use Effect, in any programming language. Use when editing or reviewing non-Effect code so dependencies, failures, state, boundaries, resources, time, and workflows stay explicit without adding Effect-shaped architecture or broader scope. |  | `changeset-scope` skill,`testing` skill |
 | `evidence-first` | Check questions and uncertain statements before answering, while following clear user choices and limits. Use in any agent mode when the user asks why or how something works, says things like I think, I remember, or I don't think, asks whether something is correct, requests advice, or gives a firm preference such as I don't want this, reduce the scope, or this is going too far. | `research` skill |  |
 | `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer authorisation for later changes; never run raw git commit. |  | `context-cli` skill,`upstream` skill |
-| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `branch-context` plugin,`context-cli` skill,`git-commit` skill | `upstream` skill |
+| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `context-cli` skill,`git-commit` skill | `upstream` skill |
 | `github-development-rulesets` | Create GitHub Development rulesets from the bundled JSON baseline, compare and migrate existing rulesets, or update required CI checks. Use when setting up a Development ruleset, choosing among existing rulesets, or reconciling their policy and emitted check names. |  |  |
 | `github-repository-setup` | Create GitHub repositories with the preferred settings, ask about licensing using GitHub templates, enable watching during creation or induction, offer CI and automerge workflows, and finish first-push setup with a Development ruleset. Use when creating or inducting a GitHub repository, using gh repo create or dot repo-induct, applying repository defaults, or completing initial GitHub setup. |  | `github-development-rulesets` skill,`shared-workflows` skill |
 | `handoff` | Save concise continuation context when work moves to another session or the user requests a handoff. | `notes-cli` skill |  |
@@ -156,52 +153,17 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Command | Description | Agent | Requires | Works with |
 |---|---|---|---|---|
-| `/all-lit-skills` | Apply relevant Lit rendering skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`lit-rendering` skill |  |
-| `/all-ts-skills` | Apply relevant TypeScript and cleanup skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`types-enforce-ts` skill |  |
-| `/bro` | Re-pitch the previous response plainly, concisely, and with enough context | default |  |  |
-| `/check-skill-updates` | Check imported skills for upstream updates | default |  |  |
-| `/code-review` | Review current branch work with the code-review skill and BranchContextPlugin context | reviewer | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`effect-principles` skill |  |
+| `/code-review` | Review current work or a pull request with the code-review skill in the read-only reviewer agent | reviewer | `changeset-scope` skill,`effect-principles` skill |  |
 | `/commit-push` | Split current changes into coherent commits and push | default | `git-commit` skill |  |
 | `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
-| `/debug-frontend` | Investigate browser-specific UI problems with targeted browser evidence | default | `browser-access` skill |  |
-| `/explore-codebase` | Explore a codebase topic and summarise the relevant code | default |  |  |
-| `/fix-workflows` | Diagnose and fix recent GitHub Actions failures, optionally scoped to a workflow or run | default | `context-cli` skill,`diagnose` skill,`shared-workflows` skill |  |
 | `/grill` | Stress-test a plan, decision, or idea with light or full question rounds | grill | `grilling` skill |  |
-| `/handoff` | Write a handoff document for the next agent session | default | `notes-cli` skill |  |
-| `/handoffs-list` | List handoff notes for the current repository | default | `notes-cli` skill | `handoff` skill |
-| `/home-assistant/all-frontend-skills` | Apply relevant Home Assistant frontend skills in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`changeset-scope` skill,`home-assistant-frontend` skill |  |
-| `/home-assistant/lazy-context` | Review and fix Home Assistant frontend lazy-context and memoization usage in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lazy-context` skill | `home-assistant-lit-rendering` skill,`lit-rendering` skill |
-| `/home-assistant/list-components` | Migrate Home Assistant list components from MWC to new primitives in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-list-components` skill,`lit-rendering` skill |  |
-| `/home-assistant/lit-rendering` | Review and fix Home Assistant Lit rendering and picker callback-shape patterns in current git scope | default | `branch-context` plugin,`branch-context-consumer` skill,`home-assistant-frontend` skill,`home-assistant-lit-rendering` skill |  |
-| `/home-assistant/replace-spacing` | Replace hardcoded spacing values with ha-space tokens from core.globals.ts | default |  |  |
-| `/import-external-skill` | Import or review external skills for the local skill library | default |  |  |
-| `/inject-context` | Inject branch and codebase stack context and optionally execute an instruction | default |  |  |
-| `/inject-stack` | Inject codebase stack context and optionally execute an instruction | default |  |  |
-| `/investigate` | Investigate a topic, issue, or area without editing by default | default |  | `browser-access` skill,`diagnose` skill,`research` skill |
-| `/note-append` | Append new notes to an existing note file for the current repository | default | `notes-cli` skill |  |
-| `/note-create` | Create a new note for the current repository in your Obsidian notes vault | default | `notes-cli` skill |  |
-| `/note-reference` | Load repository notes and identify the next step | default | `notes-cli` skill | `handoff` skill |
-| `/notes-list` | List notes for the current repository, optionally filtered by tag | default | `notes-cli` skill |  |
-| `/notes-search` | Search notes for the current repository by topic, keyword, or tag | default | `notes-cli` skill |  |
-| `/open-in-agent` | Open a local repository in an agent using its shared Herdr workspace | default |  | `session-coordination` skill |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
-| `/plannotator-annotate` | Open interactive annotation UI for a file, folder, or URL | default |  |  |
-| `/plannotator-last` | Annotate the last assistant message | default |  |  |
-| `/plannotator-review` | Open interactive code review for current changes or a PR URL; pass --git to force Git in JJ workspaces | default |  |  |
-| `/refactor-cleanup-variables` | Refactor - inline and remove unnecessary variables from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`cleanup-unnecessary-variables` skill |  |
-| `/refactor-current-work` | Refactor current branch work while preserving behaviour | refactorer | `branch-context` plugin,`branch-context-consumer` skill |  |
-| `/refactor-enforce-types` | Refactor - enforce TypeScript type safety in current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`types-enforce-ts` skill |  |
-| `/refactor-remove-single-use` | Refactor - inline and remove safe single-use functions from current git scope | refactorer | `branch-context` plugin,`branch-context-consumer` skill,`remove-single-use-functions` skill |  |
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
-| `/reset-branch-reapply` | Reset a clean feature branch to its base and reapply its committed changes staged | build | `branch-context` plugin,`branch-context-consumer` skill,`git-context` skill |  |
-| `/session-reference` | Load another OpenCode session into this conversation by its sidebar title | default |  |  |
-| `/update-docs` | Keep documentation current with recent code changes, using the Context CLI | default | `context-cli` skill,`maintain-docs` skill,`writing-style` skill |  |
 
 ## Plugins
 
 | Plugin | Description |
 |---|---|
-| `branch-context` | Injects branch-context blocks into command prompts before execution |
 | `commit-context` | Injects session-attributed commit scope into commit command prompts |
 | `context-capture` | Opt-in capture of the assembled starter context for token profiling |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
@@ -211,8 +173,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `notification` | Sends contextual desktop notifications and terminal attention for agent events |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
 | `readonly-subagent-shell-guard` | Rejects shell syntax that can turn read-only subagent commands into writes |
-| `repo-notes` | Injects repository note context into OpenCode note commands |
-| `stack-context` | Injects codebase stack-context blocks into prompts |
 | `subagent-chrome-devtools-guard` | Blocks Chrome DevTools tools from delegated subagent sessions |
 
 ## Publishing
