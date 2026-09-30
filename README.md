@@ -70,7 +70,7 @@ The config is built around a few patterns:
 
 | Skill | Description | Requires | Works with |
 |---|---|---|---|
-| `agent-oxlint` | Run the advisory Oxlint pass on JavaScript or TypeScript changes in dot-managed repositories. Use after the repository's own lint workflow whenever a task changes JS or TS files; the command checks private opt-in and local Oxlint precedence and reports only findings on changed lines. |  | `git-commit` skill,`install-timmo-oxlint-rules` skill |
+| `asking-questions` | Decide when to ask the user a question and how to present it. Use before any clarifying question, choice, or confirmation, whether through a structured question tool or in chat, and to decide whether to hold questions until findings are presented or divert to grilling; do not use to run light or full grilling rounds. | `grilling` skill | `bro` skill |
 | `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. |  |  |
 | `browser-access` | Decide whether browser access is needed and keep authorised checks narrow. Use for frontend or UI diagnosis, before proposing or using Browser Control, Chrome DevTools, or equivalent browser automation, and when the user explicitly requests browser interaction. |  |  |
 | `changeset-scope` | Keep all scoped code work contained to the user-defined changeset. Use for implementation, fixes, diagnosis, refactoring, cleanup, and review when explicit instructions, named files, diffs, branches, pull requests, or injected work scopes define the boundary. |  | `branch-context-consumer` skill |
@@ -80,8 +80,7 @@ The config is built around a few patterns:
 | `code-review` | Review a pull request, branch, work-in-progress changes, or diff for concrete defects, unmet requirements, and repository convention violations. Keep findings scoped, evidenced, and proportionate. | `changeset-scope` skill | `effect-principles` skill,`session-coordination` skill,`testing` skill |
 | `effect-principles` | Apply the Effect way of reasoning in codebases that do not use Effect, in any programming language. Use when editing or reviewing non-Effect code so dependencies, failures, state, boundaries, resources, time, and workflows stay explicit without adding Effect-shaped architecture or broader scope. |  | `changeset-scope` skill,`testing` skill |
 | `evidence-first` | Check questions and uncertain statements before answering, while following clear user choices and limits. Use in any agent mode when the user asks why or how something works, says things like I think, I remember, or I don't think, asks whether something is correct, requests advice, or gives a firm preference such as I don't want this, reduce the scope, or this is going too far. | `research` skill |  |
-| `git-commit` | Commit workflow using the dot git-commit gateway, splitting a reviewed changeset into coherent commits by default. Use only after the user explicitly requests a commit or push, including /commit or /commit-push. Never infer authorisation for later changes; never run raw git commit. |  | `context-cli` skill,`upstream` skill |
-| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `context-cli` skill,`git-commit` skill | `upstream` skill |
+| `git-context` | Patterns for working with git branches, remotes, diffs against the default branch, and rebases. Use when resolving rebase conflicts, continuing interactive rebases, amending commits, or any git operation that would open an interactive editor. | `context-cli` skill | `upstream` skill |
 | `github-development-rulesets` | Create GitHub Development rulesets from the bundled JSON baseline, compare and migrate existing rulesets, or update required CI checks. Use when setting up a Development ruleset, choosing among existing rulesets, or reconciling their policy and emitted check names. |  |  |
 | `github-repository-setup` | Create GitHub repositories with the preferred settings, ask about licensing using GitHub templates, enable watching during creation or induction, offer CI and automerge workflows, and finish first-push setup with a Development ruleset. Use when creating or inducting a GitHub repository, using gh repo create or dot repo induct, applying repository defaults, or completing initial GitHub setup. |  | `github-development-rulesets` skill,`shared-workflows` skill |
 | `handoff` | Save concise continuation context when work moves to another session or the user requests a handoff. | `notes-cli` skill |  |
@@ -91,8 +90,7 @@ The config is built around a few patterns:
 | `home-assistant-list-components` | Home Assistant list component migration and usage guidance. Use when editing ha-list, ha-list-item, ha-md-list, or migrating to ha-list-nav, ha-list-selectable, ha-list-item-button, ha-list-item-option, or ha-list-item-base. |  |  |
 | `home-assistant-lit-rendering` | Home Assistant Lit rendering extensions for HA components and context-aware picker callback shape. |  | `lit-rendering` skill |
 | `human-step-guide` | Prepare a concise guide when progress is blocked by a genuinely human-only action. Use for approvals, physical actions, credential entry, or dashboard steps the agent cannot perform; do not use for work available tools can complete. |  |  |
-| `import-external-skill` | Import skills from external repositories into this Agent Skills repository. Use when pulling in a public skill, reviewing an external skill set, or adapting upstream content into an existing skill. |  | `git-commit` skill |
-| `install-tool` | Install tools, applications, CLIs, runtimes, and packages. Use when an installation request should prefer mise for development tools, then fall back to pacman or yay for system-integrated software. | `pkexec-root` skill |  |
+| `import-external-skill` | Import skills from external repositories into this Agent Skills repository. Use when pulling in a public skill, reviewing an external skill set, or adapting upstream content into an existing skill. |  |  |
 | `lit-rendering` | Lit rendering and picker callback-shape guidance for editing and reviewing Lit components. |  |  |
 | `maintain-docs` | Keep documentation current and accurate with recent code changes, across in-code docs (docstrings, annotations, comments), in-repo docs sites, and external docs repositories. Use when asked to update docs, check docs accuracy, keep documentation current, document recent changes, refresh docstrings or annotations, or catch documentation up with the codebase. Matches the codebase's existing documentation density and stops before commit. |  |  |
 | `opencode-effect` | Develop and migrate OpenCode V2 plugins, clients, SDK hosts, and HTTP API integrations. Use for the OpenCode plugin API, `@opencode/client`, `@opencode/sdk`, server API, Effect entrypoints, or V1-to-V2 API migration. |  |  |
@@ -100,7 +98,7 @@ The config is built around a few patterns:
 | `pkexec-root` | Use pkexec first for commands that need root directly or indirectly. |  |  |
 | `plan` | Produce implementation-ready plans from the current conversation and repository context. Use when entering native plan mode, invoking /plan, or when a task needs concrete implementation sequencing before edits begin; do not use for round-based grilling. | `session-coordination` skill,`staged-implementation` skill,`writing-style` skill | `testing` skill |
 | `remove-single-use-functions` | Safe inlining and removal of single-use functions during code review and refactoring. Use when a local, non-exported helper has exactly one real call site and inlining preserves behaviour and readability. |  |  |
-| `research` | Investigate a topic against primary sources and return cited findings, comparing credible maintainer and contributor perspectives when judgement is involved. Use when the user asks why, says show evidence, validate this, or use trusted sources; wants research, docs, API, or spec facts; needs external library or GitHub behaviour verified; compares competing views; or delegates reading legwork to a background agent. |  |  |
+| `research` | Investigate a topic against primary sources and return cited findings, comparing credible maintainer and contributor perspectives when judgement is involved. Use when the user asks why, says show evidence, validate this, or use trusted sources; wants research, docs, API, or spec facts; needs external library or GitHub behaviour verified; compares competing views; or delegates reading legwork to a background agent. |  | `asking-questions` skill |
 | `safe-process-signals` | Safe process killing and signal handling for agent/subprocess contexts. Use when running pkill, killall, kill, or any process termination command from a shell subprocess, automated script, or coding agent. |  |  |
 | `session-coordination` | Split independent work into visible Herdr sessions and choose models and effort variants for each assignment. Use when tasks benefit from parallel workers or different model capabilities, when the user requests coordination or model selection, or when a coordinator agent is selected. Ask before launching workers. | `changeset-scope` skill | `code-review` skill,`evidence-first` skill,`handoff` skill,`herdr-workflows` skill,`staged-implementation` skill |
 | `shared-workflows` | Use, configure, maintain, or create reusable GitHub Actions workflows for personal and organisation repositories. Use when a task mentions shared workflows, reusable workflows, `workflow_call`, cross-repository workflow `uses:`, or the personal workflows repository; do not use for repository-specific or proof-of-concept CI unless evaluating whether it should be shared. |  |  |
@@ -119,7 +117,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|---|---|---|
 | `add-oxlint-rule` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/add-oxlint-rule) | No | `release-oxlint-rules` skill |  |
 | `agentic-workflows` | [github/gh-aw](https://github.com/github/gh-aw/tree/main/.github/skills/agentic-workflows) | Yes |  |  |
-| `ask-questions-if-underspecified` | [trailofbits/skills](https://github.com/trailofbits/skills/tree/main/plugins/ask-questions-if-underspecified/skills/ask-questions-if-underspecified) | Yes |  | `grilling` skill |
 | `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
 | `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | Yes |  | `browser-access` skill,`handoff` skill |
 | `context-cli` | [timmo001/context](https://github.com/timmo001/context/tree/main/.agents/skills/context-cli) | No |  |  |
@@ -127,8 +124,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  | `testing` skill |
 | `effect-gh` | [timmo001/effect-gh](https://github.com/timmo001/effect-gh/tree/main/skills/effect-gh) | No |  |  |
 | `effect-herdr` | [timmo001/effect-herdr](https://github.com/timmo001/effect-herdr/tree/HEAD/skills/effect-herdr) | No |  |  |
-| `gh-stack` | [github/gh-stack](https://github.com/github/gh-stack/tree/main/skills/gh-stack) | Yes | `git-commit` skill,`git-context` skill |  |
-| `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  |  |
+| `gh-stack` | [github/gh-stack](https://github.com/github/gh-stack/tree/main/skills/gh-stack) | Yes | `git-context` skill |  |
+| `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  | `asking-questions` skill |
 | `install-timmo-oxlint-rules` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/install-timmo-oxlint-rules) | No |  |  |
 | `notes-cli` | [timmo001/notes](https://github.com/timmo001/notes/tree/main/.agents/skills/notes-cli) | No |  |  |
 | `release-oxlint-rules` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/release-oxlint-rules) | Yes |  |  |
@@ -154,8 +151,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | Command | Description | Agent | Requires | Works with |
 |---|---|---|---|---|
 | `/code-review` | Review current work or a pull request with the code-review skill in the read-only reviewer agent | reviewer | `changeset-scope` skill,`effect-principles` skill |  |
-| `/commit-push` | Split current changes into coherent commits and push | default | `git-commit` skill |  |
-| `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default | `git-commit` skill |  |
+| `/commit-push` | Split current changes into coherent commits and push | default |  |  |
+| `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default |  |  |
 | `/grill` | Stress-test a plan, decision, or idea with light or full question rounds | grill | `grilling` skill |  |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
