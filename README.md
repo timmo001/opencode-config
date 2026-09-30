@@ -70,7 +70,7 @@ The config is built around a few patterns:
 
 | Skill | Description | Requires | Works with |
 |---|---|---|---|
-| `agent-oxlint` | Run the optional advisory Oxlint pass during JavaScript or TypeScript cleanup and slop-reduction work in dot-managed repositories. Use after the repository's own lint workflow; act only on diagnostics intersecting changed diff lines, while the command checks private opt-in and local Oxlint precedence. |  | `install-timmo-oxlint-rules` skill |
+| `agent-oxlint` | Run the advisory Oxlint pass on JavaScript or TypeScript changes in dot-managed repositories. Use after the repository's own lint workflow whenever a task changes JS or TS files; the command checks private opt-in and local Oxlint precedence and reports only findings on changed lines. |  | `git-commit` skill,`install-timmo-oxlint-rules` skill |
 | `branch-context-consumer` | Consume BranchContextPlugin injections in commands. Use when a command depends on an injected <branch-context> block for its scope. |  |  |
 | `browser-access` | Decide whether browser access is needed and keep authorised checks narrow. Use for frontend or UI diagnosis, before proposing or using Browser Control, Chrome DevTools, or equivalent browser automation, and when the user explicitly requests browser interaction. |  |  |
 | `changeset-scope` | Keep all scoped code work contained to the user-defined changeset. Use for implementation, fixes, diagnosis, refactoring, cleanup, and review when explicit instructions, named files, diffs, branches, pull requests, or injected work scopes define the boundary. |  | `branch-context-consumer` skill |
