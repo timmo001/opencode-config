@@ -164,6 +164,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Plugin | Description |
 |---|---|
+| `agent-lint` | Runs the repository's fallback lint commands after a successful agent run and leaves any problems waiting for the next message |
 | `commit-context` | Injects session-attributed commit scope into commit command prompts |
 | `context-capture` | Opt-in capture of the assembled starter context for token profiling |
 | `env-protection` | Blocks direct access to .env files to prevent leaking secrets |
