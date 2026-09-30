@@ -172,6 +172,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `notes-guard` | Blocks direct file access to the repository notes vault |
 | `notification` | Sends contextual desktop notifications and terminal attention for agent events |
 | `pitchfork-dev-server-guard` | Enforces a project's declared pitchfork dev-server workflow for agents |
+| `question-presentation-guard` | Rejects question tool calls that are not preceded by findings in chat |
 | `readonly-subagent-shell-guard` | Rejects shell syntax that can turn read-only subagent commands into writes |
 | `subagent-chrome-devtools-guard` | Blocks Chrome DevTools tools from delegated subagent sessions |
 
