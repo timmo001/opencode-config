@@ -173,5 +173,5 @@ These skills were imported from other repos. Some are used as-is; others have be
 ## Publishing
 
 This repo is published automatically via GitHub Actions when the OpenCode config
-[`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy-quattro/agents/.config/opencode) or the pinned
-[`timmo001/skills`](https://github.com/timmo001/skills) revision changes.
+[`agents/.config/opencode/`](https://github.com/timmo001/dotfiles/tree/distro/arch-omarchy-quattro/agents/.config/opencode) changes, and daily to
+follow the latest [`timmo001/skills`](https://github.com/timmo001/skills) `main`.
