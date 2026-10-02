@@ -119,6 +119,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `bro` | [dmmulroy/skills](https://github.com/dmmulroy/skills/tree/main/bro) | Yes |  |  |
 | `browser-control` | [anomalyco/browser-control](https://github.com/anomalyco/browser-control/tree/main/skills/browser-control) | Yes |  | `browser-access` skill,`handoff` skill |
 | `css-motion-systems` | [stolinski/s-stack](https://github.com/stolinski/s-stack/tree/main/skills/css-motion-systems) | Yes |  |  |
+| `decision-models` | [ollaya-dev/ollaya](https://github.com/ollaya-dev/ollaya/tree/main/skills/ollaya-decisions) | Yes |  |  |
 | `diagnose` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/diagnosing-bugs) | Yes |  | `testing` skill |
 | `gh-stack` | [github/gh-stack](https://github.com/github/gh-stack/tree/main/skills/gh-stack) | Yes | `git-context` skill |  |
 | `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  | `asking-questions` skill |
