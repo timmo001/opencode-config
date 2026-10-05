@@ -124,7 +124,8 @@ These skills were imported from other repos. Some are used as-is; others have be
 | `gh-stack` | [github/gh-stack](https://github.com/github/gh-stack/tree/main/skills/gh-stack) | Yes | `git-context` skill |  |
 | `grilling` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) | Yes |  | `asking-questions` skill |
 | `release-oxlint-rules` | [timmo001/oxlint-rules](https://github.com/timmo001/oxlint-rules/tree/main/skills/release-oxlint-rules) | Yes |  |  |
-| `show-me` | [dmmulroy/.dotfiles](https://github.com/dmmulroy/.dotfiles/tree/main/home/.agents/skills/show-me) | Yes |  |  |
+| `retro` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/engineering/retro) | Yes | `writing-dot-skills` skill | `code-review` skill |
+| `show-me` | [humanlayer/skills](https://github.com/humanlayer/skills/tree/main/plugins/show-me/skills/show-me) | Yes |  |  |
 | `to-questionnaire` | [mattpocock/skills](https://github.com/mattpocock/skills/tree/main/skills/productivity/to-questionnaire) | Yes |  |  |
 | `wrangler` | [cloudflare/skills](https://github.com/cloudflare/skills/tree/main/skills/wrangler) | Yes |  |  |
 
