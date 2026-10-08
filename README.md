@@ -155,8 +155,6 @@ These skills were imported from other repos. Some are used as-is; others have be
 
 | Plugin | Description |
 |---|---|
-| `agent-lint` | Runs the repository's fallback lint commands after a successful agent run and holds any problems until the user sends or dismisses them |
-| `ci-watch` | Follows the Herdr Workflow Watch state for the session's checkout. Failures only reach the model when the user sends them |
 | `commit-context` | Injects session-attributed commit scope into commit command prompts |
 | `context-capture` | Opt-in capture of the assembled starter context for token profiling |
 | `env-protection` | Blocks direct access to .env files, and any extra secret files listed in env-protection.yml, to prevent leaking secrets |
