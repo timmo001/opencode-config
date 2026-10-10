@@ -146,7 +146,7 @@ These skills were imported from other repos. Some are used as-is; others have be
 |---|---|---|---|---|
 | `/code-review` | Review current work or a pull request with the code-review skill in the read-only reviewer agent | reviewer | `changeset-scope` skill,`effect-principles` skill |  |
 | `/commit-push` | Split current changes into coherent commits and push | default |  |  |
-| `/commit` | Split current changes into coherent commits via the dot git-commit gateway | default |  |  |
+| `/commit` | Split current changes into coherent commits via the dot git commit gateway | default |  |  |
 | `/grill` | Stress-test a plan, decision, or idea with light or full question rounds | grill | `grilling` skill |  |
 | `/plan` | Manual entrypoint to native plan mode from the current conversation context | plan |  |  |
 | `/research` | Research a topic from primary sources and compare evidence where judgement is involved | researcher |  |  |
